@@ -103,7 +103,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = "khipu-api-php-client/2.0";
+    protected $userAgent = "khipu-api-php-client/2.0.0";
 
     /**
      * Debug switch (default set to false)
@@ -510,7 +510,7 @@ class Configuration
         $report .= "    OS: ".php_uname()."\n";
         $report .= "    PHP Version: ".phpversion()."\n";
         $report .= "    Swagger Spec Version: 2.0.0\n";
-        $report .= "    SDK Package Version: 2.0\n";
+        $report .= "    SDK Package Version: 2.0.0\n";
         $report .= "    Temp Folder Path: ".self::getDefaultConfiguration()->getTempFolderPath()."\n";
 
         return $report;
