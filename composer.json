@@ -3,17 +3,17 @@
     "version": "2.0",
     "description": "",
     "keywords": [
-        "swagger",
+        "khipu",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
+    "homepage": "https://github.com/khipu/khipu-api-php-client",
     "license": "Apache v2",
     "authors": [
         {
-            "name": "Swagger and contributors",
-            "homepage": "https://github.com/swagger-api/swagger-codegen"
+            "name": "khipu",
+            "homepage": "https://github.com/khipu/khipu-api-php-client"
         }
     ],
     "require": {
