@@ -1,6 +1,6 @@
 {
     "name": "khipu/khipu-api-client",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "",
     "keywords": [
         "khipu",
@@ -16,6 +16,8 @@
             "homepage": "https://github.com/khipu/khipu-api-php-client"
         }
     ],
+    "type": "library",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",
         "ext-curl": "*",
