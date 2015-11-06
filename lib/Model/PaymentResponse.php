@@ -77,7 +77,12 @@ class PaymentResponse implements ArrayAccess
         'payer_email' => 'string',
         'personal_identifier' => 'string',
         'bank_account_number' => 'string',
-        'out_of_date_conciliation' => 'bool'
+        'out_of_date_conciliation' => 'bool',
+        'transaction_id' => 'string',
+        'custom' => 'string',
+        'responsible_user_email' => 'string',
+        'send_reminders' => 'string',
+        'send_email' => 'bool'
     );
   
     /** 
@@ -111,7 +116,12 @@ class PaymentResponse implements ArrayAccess
         'payer_email' => 'payer_email',
         'personal_identifier' => 'personal_identifier',
         'bank_account_number' => 'bank_account_number',
-        'out_of_date_conciliation' => 'out_of_date_conciliation'
+        'out_of_date_conciliation' => 'out_of_date_conciliation',
+        'transaction_id' => 'transaction_id',
+        'custom' => 'custom',
+        'responsible_user_email' => 'responsible_user_email',
+        'send_reminders' => 'send_reminders',
+        'send_email' => 'send_email'
     );
   
     /**
@@ -145,7 +155,12 @@ class PaymentResponse implements ArrayAccess
         'payer_email' => 'setPayerEmail',
         'personal_identifier' => 'setPersonalIdentifier',
         'bank_account_number' => 'setBankAccountNumber',
-        'out_of_date_conciliation' => 'setOutOfDateConciliation'
+        'out_of_date_conciliation' => 'setOutOfDateConciliation',
+        'transaction_id' => 'setTransactionId',
+        'custom' => 'setCustom',
+        'responsible_user_email' => 'setResponsibleUserEmail',
+        'send_reminders' => 'setSendReminders',
+        'send_email' => 'setSendEmail'
     );
   
     /**
@@ -179,7 +194,12 @@ class PaymentResponse implements ArrayAccess
         'payer_email' => 'getPayerEmail',
         'personal_identifier' => 'getPersonalIdentifier',
         'bank_account_number' => 'getBankAccountNumber',
-        'out_of_date_conciliation' => 'getOutOfDateConciliation'
+        'out_of_date_conciliation' => 'getOutOfDateConciliation',
+        'transaction_id' => 'getTransactionId',
+        'custom' => 'getCustom',
+        'responsible_user_email' => 'getResponsibleUserEmail',
+        'send_reminders' => 'getSendReminders',
+        'send_email' => 'getSendEmail'
     );
   
     
@@ -345,6 +365,36 @@ class PaymentResponse implements ArrayAccess
       */
     protected $out_of_date_conciliation;
     
+    /**
+      * $transaction_id 
+      * @var string
+      */
+    protected $transaction_id;
+    
+    /**
+      * $custom 
+      * @var string
+      */
+    protected $custom;
+    
+    /**
+      * $responsible_user_email 
+      * @var string
+      */
+    protected $responsible_user_email;
+    
+    /**
+      * $send_reminders 
+      * @var string
+      */
+    protected $send_reminders;
+    
+    /**
+      * $send_email 
+      * @var bool
+      */
+    protected $send_email;
+    
 
     /**
      * Constructor
@@ -380,6 +430,11 @@ class PaymentResponse implements ArrayAccess
             $this->personal_identifier = $data["personal_identifier"];
             $this->bank_account_number = $data["bank_account_number"];
             $this->out_of_date_conciliation = $data["out_of_date_conciliation"];
+            $this->transaction_id = $data["transaction_id"];
+            $this->custom = $data["custom"];
+            $this->responsible_user_email = $data["responsible_user_email"];
+            $this->send_reminders = $data["send_reminders"];
+            $this->send_email = $data["send_email"];
         }
     }
     
@@ -947,6 +1002,111 @@ class PaymentResponse implements ArrayAccess
     {
         
         $this->out_of_date_conciliation = $out_of_date_conciliation;
+        return $this;
+    }
+    
+    /**
+     * Gets transaction_id
+     * @return string
+     */
+    public function getTransactionId()
+    {
+        return $this->transaction_id;
+    }
+  
+    /**
+     * Sets transaction_id
+     * @param string $transaction_id 
+     * @return $this
+     */
+    public function setTransactionId($transaction_id)
+    {
+        
+        $this->transaction_id = $transaction_id;
+        return $this;
+    }
+    
+    /**
+     * Gets custom
+     * @return string
+     */
+    public function getCustom()
+    {
+        return $this->custom;
+    }
+  
+    /**
+     * Sets custom
+     * @param string $custom 
+     * @return $this
+     */
+    public function setCustom($custom)
+    {
+        
+        $this->custom = $custom;
+        return $this;
+    }
+    
+    /**
+     * Gets responsible_user_email
+     * @return string
+     */
+    public function getResponsibleUserEmail()
+    {
+        return $this->responsible_user_email;
+    }
+  
+    /**
+     * Sets responsible_user_email
+     * @param string $responsible_user_email 
+     * @return $this
+     */
+    public function setResponsibleUserEmail($responsible_user_email)
+    {
+        
+        $this->responsible_user_email = $responsible_user_email;
+        return $this;
+    }
+    
+    /**
+     * Gets send_reminders
+     * @return string
+     */
+    public function getSendReminders()
+    {
+        return $this->send_reminders;
+    }
+  
+    /**
+     * Sets send_reminders
+     * @param string $send_reminders 
+     * @return $this
+     */
+    public function setSendReminders($send_reminders)
+    {
+        
+        $this->send_reminders = $send_reminders;
+        return $this;
+    }
+    
+    /**
+     * Gets send_email
+     * @return bool
+     */
+    public function getSendEmail()
+    {
+        return $this->send_email;
+    }
+  
+    /**
+     * Sets send_email
+     * @param bool $send_email 
+     * @return $this
+     */
+    public function setSendEmail($send_email)
+    {
+        
+        $this->send_email = $send_email;
         return $this;
     }
     
