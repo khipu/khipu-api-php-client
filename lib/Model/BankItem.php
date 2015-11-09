@@ -51,6 +51,7 @@ class BankItem implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
+        'bank_id' => 'string',
         'name' => 'string',
         'message' => 'string',
         'min_amount' => 'double',
@@ -63,6 +64,7 @@ class BankItem implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
+        'bank_id' => 'bank_id',
         'name' => 'name',
         'message' => 'message',
         'min_amount' => 'min_amount',
@@ -75,6 +77,7 @@ class BankItem implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
+        'bank_id' => 'setBankId',
         'name' => 'setName',
         'message' => 'setMessage',
         'min_amount' => 'setMinAmount',
@@ -87,6 +90,7 @@ class BankItem implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
+        'bank_id' => 'getBankId',
         'name' => 'getName',
         'message' => 'getMessage',
         'min_amount' => 'getMinAmount',
@@ -94,6 +98,12 @@ class BankItem implements ArrayAccess
         'parent' => 'getParent'
     );
   
+    
+    /**
+      * $bank_id 
+      * @var string
+      */
+    protected $bank_id;
     
     /**
       * $name 
@@ -133,12 +143,34 @@ class BankItem implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
+            $this->bank_id = $data["bank_id"];
             $this->name = $data["name"];
             $this->message = $data["message"];
             $this->min_amount = $data["min_amount"];
             $this->type = $data["type"];
             $this->parent = $data["parent"];
         }
+    }
+    
+    /**
+     * Gets bank_id
+     * @return string
+     */
+    public function getBankId()
+    {
+        return $this->bank_id;
+    }
+  
+    /**
+     * Sets bank_id
+     * @param string $bank_id 
+     * @return $this
+     */
+    public function setBankId($bank_id)
+    {
+        
+        $this->bank_id = $bank_id;
+        return $this;
     }
     
     /**

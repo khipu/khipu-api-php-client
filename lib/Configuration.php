@@ -103,7 +103,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = "khipu-api-php-client/2.0.2";
+    protected $userAgent = "khipu-api-php-client/2.0.4";
 
     /**
      * Debug switch (default set to false)
@@ -344,6 +344,11 @@ class Configuration
         return $this;
     }
 
+    public function addToUserAgent($array)
+    {
+        $userAgent .= "|" . implode("|", $array);
+    }
+
     /**
      * Gets the user agent of the api client
      *
@@ -509,8 +514,8 @@ class Configuration
         $report  = "PHP SDK (Khipu) Debug Report:\n";
         $report .= "    OS: ".php_uname()."\n";
         $report .= "    PHP Version: ".phpversion()."\n";
-        $report .= "    Swagger Spec Version: 2.0.2\n";
-        $report .= "    SDK Package Version: 2.0.2\n";
+        $report .= "    Swagger Spec Version: 2.0.4\n";
+        $report .= "    SDK Package Version: 2.0.4\n";
         $report .= "    Temp Folder Path: ".self::getDefaultConfiguration()->getTempFolderPath()."\n";
 
         return $report;

@@ -51,7 +51,7 @@ class BanksResponse implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'banks' => '\Khipu\Model\BankItem'
+        'banks' => '\Khipu\Model\BankItem[]'
     );
   
     /** 
@@ -81,7 +81,7 @@ class BanksResponse implements ArrayAccess
     
     /**
       * $banks 
-      * @var \Khipu\Model\BankItem
+      * @var \Khipu\Model\BankItem[]
       */
     protected $banks;
     
@@ -99,7 +99,7 @@ class BanksResponse implements ArrayAccess
     
     /**
      * Gets banks
-     * @return \Khipu\Model\BankItem
+     * @return \Khipu\Model\BankItem[]
      */
     public function getBanks()
     {
@@ -108,7 +108,7 @@ class BanksResponse implements ArrayAccess
   
     /**
      * Sets banks
-     * @param \Khipu\Model\BankItem $banks 
+     * @param \Khipu\Model\BankItem[] $banks 
      * @return $this
      */
     public function setBanks($banks)
