@@ -346,7 +346,7 @@ class Configuration
 
     public function addToUserAgent($array)
     {
-        $userAgent .= "|" . implode("|", $array);
+        $this->userAgent .= "|" . implode("|", $array);
     }
 
     /**
