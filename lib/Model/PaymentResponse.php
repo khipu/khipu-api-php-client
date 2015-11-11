@@ -81,7 +81,7 @@ class PaymentResponse implements ArrayAccess
         'transaction_id' => 'string',
         'custom' => 'string',
         'responsible_user_email' => 'string',
-        'send_reminders' => 'string',
+        'send_reminders' => 'bool',
         'send_email' => 'bool'
     );
   
@@ -385,7 +385,7 @@ class PaymentResponse implements ArrayAccess
     
     /**
       * $send_reminders 
-      * @var string
+      * @var bool
       */
     protected $send_reminders;
     
@@ -1070,7 +1070,7 @@ class PaymentResponse implements ArrayAccess
     
     /**
      * Gets send_reminders
-     * @return string
+     * @return bool
      */
     public function getSendReminders()
     {
@@ -1079,7 +1079,7 @@ class PaymentResponse implements ArrayAccess
   
     /**
      * Sets send_reminders
-     * @param string $send_reminders 
+     * @param bool $send_reminders 
      * @return $this
      */
     public function setSendReminders($send_reminders)
