@@ -57,6 +57,9 @@ class PaymentResponse implements ArrayAccess
         'transfer_url' => 'string',
         'app_url' => 'string',
         'ready_for_terminal' => 'bool',
+        'notification_token' => 'string',
+        'receiver_id' => 'Number',
+        'conciliation_date' => '\DateTime',
         'subject' => 'string',
         'amount' => 'double',
         'currency' => 'string',
@@ -96,6 +99,9 @@ class PaymentResponse implements ArrayAccess
         'transfer_url' => 'transfer_url',
         'app_url' => 'app_url',
         'ready_for_terminal' => 'ready_for_terminal',
+        'notification_token' => 'notification_token',
+        'receiver_id' => 'receiver_id',
+        'conciliation_date' => 'conciliation_date',
         'subject' => 'subject',
         'amount' => 'amount',
         'currency' => 'currency',
@@ -135,6 +141,9 @@ class PaymentResponse implements ArrayAccess
         'transfer_url' => 'setTransferUrl',
         'app_url' => 'setAppUrl',
         'ready_for_terminal' => 'setReadyForTerminal',
+        'notification_token' => 'setNotificationToken',
+        'receiver_id' => 'setReceiverId',
+        'conciliation_date' => 'setConciliationDate',
         'subject' => 'setSubject',
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
@@ -174,6 +183,9 @@ class PaymentResponse implements ArrayAccess
         'transfer_url' => 'getTransferUrl',
         'app_url' => 'getAppUrl',
         'ready_for_terminal' => 'getReadyForTerminal',
+        'notification_token' => 'getNotificationToken',
+        'receiver_id' => 'getReceiverId',
+        'conciliation_date' => 'getConciliationDate',
         'subject' => 'getSubject',
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
@@ -238,6 +250,24 @@ class PaymentResponse implements ArrayAccess
       * @var bool
       */
     protected $ready_for_terminal;
+    
+    /**
+      * $notification_token 
+      * @var string
+      */
+    protected $notification_token;
+    
+    /**
+      * $receiver_id 
+      * @var Number
+      */
+    protected $receiver_id;
+    
+    /**
+      * $conciliation_date 
+      * @var \DateTime
+      */
+    protected $conciliation_date;
     
     /**
       * $subject 
@@ -409,6 +439,9 @@ class PaymentResponse implements ArrayAccess
             $this->transfer_url = $data["transfer_url"];
             $this->app_url = $data["app_url"];
             $this->ready_for_terminal = $data["ready_for_terminal"];
+            $this->notification_token = $data["notification_token"];
+            $this->receiver_id = $data["receiver_id"];
+            $this->conciliation_date = $data["conciliation_date"];
             $this->subject = $data["subject"];
             $this->amount = $data["amount"];
             $this->currency = $data["currency"];
@@ -561,6 +594,69 @@ class PaymentResponse implements ArrayAccess
     {
         
         $this->ready_for_terminal = $ready_for_terminal;
+        return $this;
+    }
+    
+    /**
+     * Gets notification_token
+     * @return string
+     */
+    public function getNotificationToken()
+    {
+        return $this->notification_token;
+    }
+  
+    /**
+     * Sets notification_token
+     * @param string $notification_token 
+     * @return $this
+     */
+    public function setNotificationToken($notification_token)
+    {
+        
+        $this->notification_token = $notification_token;
+        return $this;
+    }
+    
+    /**
+     * Gets receiver_id
+     * @return Number
+     */
+    public function getReceiverId()
+    {
+        return $this->receiver_id;
+    }
+  
+    /**
+     * Sets receiver_id
+     * @param Number $receiver_id 
+     * @return $this
+     */
+    public function setReceiverId($receiver_id)
+    {
+        
+        $this->receiver_id = $receiver_id;
+        return $this;
+    }
+    
+    /**
+     * Gets conciliation_date
+     * @return \DateTime
+     */
+    public function getConciliationDate()
+    {
+        return $this->conciliation_date;
+    }
+  
+    /**
+     * Sets conciliation_date
+     * @param \DateTime $conciliation_date 
+     * @return $this
+     */
+    public function setConciliationDate($conciliation_date)
+    {
+        
+        $this->conciliation_date = $conciliation_date;
         return $this;
     }
     
