@@ -58,7 +58,7 @@ class PaymentResponse implements ArrayAccess
         'app_url' => 'string',
         'ready_for_terminal' => 'bool',
         'notification_token' => 'string',
-        'receiver_id' => 'Number',
+        'receiver_id' => 'int',
         'conciliation_date' => '\DateTime',
         'subject' => 'string',
         'amount' => 'double',
@@ -259,7 +259,7 @@ class PaymentResponse implements ArrayAccess
     
     /**
       * $receiver_id 
-      * @var Number
+      * @var int
       */
     protected $receiver_id;
     
@@ -620,7 +620,7 @@ class PaymentResponse implements ArrayAccess
     
     /**
      * Gets receiver_id
-     * @return Number
+     * @return int
      */
     public function getReceiverId()
     {
@@ -629,7 +629,7 @@ class PaymentResponse implements ArrayAccess
   
     /**
      * Sets receiver_id
-     * @param Number $receiver_id 
+     * @param int $receiver_id 
      * @return $this
      */
     public function setReceiverId($receiver_id)
