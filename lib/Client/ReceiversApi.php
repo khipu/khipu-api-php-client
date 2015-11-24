@@ -106,6 +106,7 @@ class ReceiversApi
      * @param string $business_phone Teléfono del cobrador asociado a la cuenta de cobro a crear. (required)
      * @param string $business_address_line_1 Dirección del cobrador de la cuenta de cobro a crear. (required)
      * @param string $business_address_line_2 Segunda línea de la dirección del cobrador de la cuenta de cobro a crear. (required)
+     * @param string $business_address_line_3 Tercera línea de la dirección del cobrador de la cuenta de cobro a crear. (required)
      * @param string $contact_full_name Nombre del contacto del cobrador. (required)
      * @param string $contact_job_title Cargo del contacto del cobrador. (required)
      * @param string $contact_email Correo electrónico del contacto del cobrador. (required)
@@ -113,7 +114,7 @@ class ReceiversApi
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function receiversPost($admin_first_name, $admin_last_name, $admin_email, $country_code, $business_identifier, $business_category, $business_name, $business_phone, $business_address_line_1, $business_address_line_2, $contact_full_name, $contact_job_title, $contact_email, $contact_phone)
+    public function receiversPost($admin_first_name, $admin_last_name, $admin_email, $country_code, $business_identifier, $business_category, $business_name, $business_phone, $business_address_line_1, $business_address_line_2, $business_address_line_3, $contact_full_name, $contact_job_title, $contact_email, $contact_phone)
     {
         
         // verify the required parameter 'admin_first_name' is set
@@ -155,6 +156,10 @@ class ReceiversApi
         // verify the required parameter 'business_address_line_2' is set
         if ($business_address_line_2 === null) {
             throw new \InvalidArgumentException('Missing the required parameter $business_address_line_2 when calling receiversPost');
+        }
+        // verify the required parameter 'business_address_line_3' is set
+        if ($business_address_line_3 === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $business_address_line_3 when calling receiversPost');
         }
         // verify the required parameter 'contact_full_name' is set
         if ($contact_full_name === null) {
@@ -220,6 +225,9 @@ class ReceiversApi
         }// form params
         if ($business_address_line_2 !== null) {
             $formParams['business_address_line_2'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_2);
+        }// form params
+        if ($business_address_line_3 !== null) {
+            $formParams['business_address_line_3'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_3);
         }// form params
         if ($contact_full_name !== null) {
             $formParams['contact_full_name'] = $this->apiClient->getSerializer()->toFormValue($contact_full_name);
