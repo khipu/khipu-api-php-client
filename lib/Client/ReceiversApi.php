@@ -111,7 +111,7 @@ class ReceiversApi
      * @param string $contact_job_title Cargo del contacto del cobrador. (required)
      * @param string $contact_email Correo electrónico del contacto del cobrador. (required)
      * @param string $contact_phone Teléfono del contacto del cobrador. (required)
-     * @return \Khipu\Model\SuccessResponse
+     * @return \Khipu\Model\ReceiversCreateResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
     public function receiversPost($admin_first_name, $admin_last_name, $admin_email, $country_code, $business_identifier, $business_category, $business_name, $business_phone, $business_address_line_1, $business_address_line_2, $business_address_line_3, $contact_full_name, $contact_job_title, $contact_email, $contact_phone)
@@ -284,19 +284,19 @@ class ReceiversApi
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Khipu\Model\SuccessResponse'
+                $headerParams, '\Khipu\Model\ReceiversCreateResponse'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\SuccessResponse', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\ReceiversCreateResponse', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\SuccessResponse', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\ReceiversCreateResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
