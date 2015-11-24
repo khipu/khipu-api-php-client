@@ -97,7 +97,7 @@ class PaymentsApi
      * Obtener información de un pago
      *
      * @param string $notification_token Token de notifiación recibido usando la API de notificaiones 1.3 o superior. (required)
-     * @return \Khipu\Model\PaymentResponse
+     * @return \Khipu\Model\PaymentsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
     public function paymentsGet($notification_token)
@@ -172,19 +172,19 @@ class PaymentsApi
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Khipu\Model\PaymentResponse'
+                $headerParams, '\Khipu\Model\PaymentsResponse'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\PaymentResponse', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\PaymentsResponse', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\PaymentResponse', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\PaymentsResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
@@ -233,7 +233,7 @@ class PaymentsApi
      * @param string $responsible_user_email Correo electrónico del responsable de este cobro, debe corresponder a un usuario khipu con permisos para cobrar usando esta cuenta de cobro (optional)
      * @param string $fixed_payer_personal_identifier Identificador personal. Si se especifica, solo podrá ser pagado usando ese identificador (optional)
      * @param double $integrator_fee Comisión para el integrador. Sólo es válido si la cuenta de cobro tiene una cuenta de integrador asociada (optional)
-     * @return \Khipu\Model\CreateResponse
+     * @return \Khipu\Model\PaymentsCreateResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
     public function paymentsPost($subject, $currency, $amount, $transaction_id=null, $custom=null, $body=null, $bank_id=null, $return_url=null, $cancel_url=null, $picture_url=null, $notify_url=null, $notify_api_version=null, $expires_date=null, $send_email=null, $payer_name=null, $payer_email=null, $send_reminders=null, $responsible_user_email=null, $fixed_payer_personal_identifier=null, $integrator_fee=null)
@@ -373,19 +373,19 @@ class PaymentsApi
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Khipu\Model\CreateResponse'
+                $headerParams, '\Khipu\Model\PaymentsCreateResponse'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\CreateResponse', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\PaymentsCreateResponse', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\CreateResponse', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\PaymentsCreateResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
@@ -415,7 +415,7 @@ class PaymentsApi
      * Obtener información de un pago
      *
      * @param string $id Identificador del pago (required)
-     * @return \Khipu\Model\PaymentResponse
+     * @return \Khipu\Model\PaymentsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
     public function paymentsIdGet($id)
@@ -494,19 +494,19 @@ class PaymentsApi
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Khipu\Model\PaymentResponse'
+                $headerParams, '\Khipu\Model\PaymentsResponse'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\PaymentResponse', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\PaymentsResponse', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\PaymentResponse', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\PaymentsResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
