@@ -654,13 +654,14 @@ class PaymentsApi
     /**
      * paymentsIdRefundsPost
      *
-     * Reembolsar un pago
+     * Reembolsar total o parcialmente un pago
      *
      * @param string $id Identificador del pago (required)
+     * @param double $amount El monto a devolver. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda. Si se omite el reembolso se hará por el total del monto del pago. (optional)
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function paymentsIdRefundsPost($id)
+    public function paymentsIdRefundsPost($id, $amount=null)
     {
         
         // verify the required parameter 'id' is set
@@ -692,7 +693,10 @@ class PaymentsApi
                 $resourcePath
             );
         }
-        
+        // form params
+        if ($amount !== null) {
+            $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($amount);
+        }
         
   
         // for model (json/xml)
