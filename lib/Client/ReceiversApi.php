@@ -96,25 +96,26 @@ class ReceiversApi
      *
      * Crear una nueva cuenta de cobro
      *
-     * @param string $admin_first_name Nombre de pila del administrador de la cuenta de cobro a crear. (required)
-     * @param string $admin_last_name Apellido del administrador de la cuenta de cobro a crear. (required)
-     * @param string $admin_email Correo electrónico del administrador de la cuenta de cobro a crear. (required)
-     * @param string $country_code Código alfanumérico de dos caractéres ISO 3166-1 del país de la cuenta de cobro a crear. (required)
-     * @param string $business_identifier Identificador tributario del cobrador asociado a la cuenta de cobro a crear. (required)
-     * @param string $business_category Categoría tributaria o rubro tributario del cobrador asociado a la cuenta de cobro a crear. (required)
-     * @param string $business_name Nombre tributario del cobrador asociado a la cuenta de cobro a crear. (required)
-     * @param string $business_phone Teléfono del cobrador asociado a la cuenta de cobro a crear. (required)
-     * @param string $business_address_line_1 Dirección del cobrador de la cuenta de cobro a crear. (required)
-     * @param string $business_address_line_2 Segunda línea de la dirección del cobrador de la cuenta de cobro a crear. (required)
-     * @param string $business_address_line_3 Tercera línea de la dirección del cobrador de la cuenta de cobro a crear. (required)
-     * @param string $contact_full_name Nombre del contacto del cobrador. (required)
-     * @param string $contact_job_title Cargo del contacto del cobrador. (required)
-     * @param string $contact_email Correo electrónico del contacto del cobrador. (required)
-     * @param string $contact_phone Teléfono del contacto del cobrador. (required)
+     * @param string $admin_first_name Nombre de pila del administrador de la cuenta de cobro a crear. (requerido)
+     * @param string $admin_last_name Apellido del administrador de la cuenta de cobro a crear. (requerido)
+     * @param string $admin_email Correo electrónico del administrador de la cuenta de cobro a crear. (requerido)
+     * @param string $country_code Código alfanumérico de dos caractéres ISO 3166-1 del país de la cuenta de cobro a crear. (requerido)
+     * @param string $business_identifier Identificador tributario del cobrador asociado a la cuenta de cobro a crear. (requerido)
+     * @param string $business_category Categoría tributaria o rubro tributario del cobrador asociado a la cuenta de cobro a crear. (requerido)
+     * @param string $business_name Nombre tributario del cobrador asociado a la cuenta de cobro a crear. (requerido)
+     * @param string $business_phone Teléfono del cobrador asociado a la cuenta de cobro a crear. (requerido)
+     * @param string $business_address_line_1 Dirección del cobrador de la cuenta de cobro a crear. (requerido)
+     * @param string $business_address_line_2 Segunda línea de la dirección del cobrador de la cuenta de cobro a crear. (requerido)
+     * @param string $business_address_line_3 Tercera línea de la dirección del cobrador de la cuenta de cobro a crear. (requerido)
+     * @param string $contact_full_name Nombre del contacto del cobrador. (requerido)
+     * @param string $contact_job_title Cargo del contacto del cobrador. (requerido)
+     * @param string $contact_email Correo electrónico del contacto del cobrador. (requerido)
+     * @param string $contact_phone Teléfono del contacto del cobrador. (requerido)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\ReceiversCreateResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function receiversPost($admin_first_name, $admin_last_name, $admin_email, $country_code, $business_identifier, $business_category, $business_name, $business_phone, $business_address_line_1, $business_address_line_2, $business_address_line_3, $contact_full_name, $contact_job_title, $contact_email, $contact_phone)
+    public function receiversPost($admin_first_name, $admin_last_name, $admin_email, $country_code, $business_identifier, $business_category, $business_name, $business_phone, $business_address_line_1, $business_address_line_2, $business_address_line_3, $contact_full_name, $contact_job_title, $contact_email, $contact_phone, $options = null)
     {
         
         // verify the required parameter 'admin_first_name' is set
@@ -193,55 +194,66 @@ class ReceiversApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         
-        
-        
-        // form params
-        if ($admin_first_name !== null) {
-            $formParams['admin_first_name'] = $this->apiClient->getSerializer()->toFormValue($admin_first_name);
-        }// form params
-        if ($admin_last_name !== null) {
-            $formParams['admin_last_name'] = $this->apiClient->getSerializer()->toFormValue($admin_last_name);
-        }// form params
-        if ($admin_email !== null) {
-            $formParams['admin_email'] = $this->apiClient->getSerializer()->toFormValue($admin_email);
-        }// form params
-        if ($country_code !== null) {
-            $formParams['country_code'] = $this->apiClient->getSerializer()->toFormValue($country_code);
-        }// form params
-        if ($business_identifier !== null) {
-            $formParams['business_identifier'] = $this->apiClient->getSerializer()->toFormValue($business_identifier);
-        }// form params
-        if ($business_category !== null) {
-            $formParams['business_category'] = $this->apiClient->getSerializer()->toFormValue($business_category);
-        }// form params
-        if ($business_name !== null) {
-            $formParams['business_name'] = $this->apiClient->getSerializer()->toFormValue($business_name);
-        }// form params
-        if ($business_phone !== null) {
-            $formParams['business_phone'] = $this->apiClient->getSerializer()->toFormValue($business_phone);
-        }// form params
-        if ($business_address_line_1 !== null) {
-            $formParams['business_address_line_1'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_1);
-        }// form params
-        if ($business_address_line_2 !== null) {
-            $formParams['business_address_line_2'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_2);
-        }// form params
-        if ($business_address_line_3 !== null) {
-            $formParams['business_address_line_3'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_3);
-        }// form params
-        if ($contact_full_name !== null) {
-            $formParams['contact_full_name'] = $this->apiClient->getSerializer()->toFormValue($contact_full_name);
-        }// form params
-        if ($contact_job_title !== null) {
-            $formParams['contact_job_title'] = $this->apiClient->getSerializer()->toFormValue($contact_job_title);
-        }// form params
-        if ($contact_email !== null) {
-            $formParams['contact_email'] = $this->apiClient->getSerializer()->toFormValue($contact_email);
-        }// form params
-        if ($contact_phone !== null) {
-            $formParams['contact_phone'] = $this->apiClient->getSerializer()->toFormValue($contact_phone);
+
+        if( $options != null ) {
+          
         }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
+        
+
+        if( $options != null ) {
+            
+        }
+
+        // form params
+        $formParams['admin_first_name'] = $this->apiClient->getSerializer()->toFormValue($admin_first_name);
+        // form params
+        $formParams['admin_last_name'] = $this->apiClient->getSerializer()->toFormValue($admin_last_name);
+        // form params
+        $formParams['admin_email'] = $this->apiClient->getSerializer()->toFormValue($admin_email);
+        // form params
+        $formParams['country_code'] = $this->apiClient->getSerializer()->toFormValue($country_code);
+        // form params
+        $formParams['business_identifier'] = $this->apiClient->getSerializer()->toFormValue($business_identifier);
+        // form params
+        $formParams['business_category'] = $this->apiClient->getSerializer()->toFormValue($business_category);
+        // form params
+        $formParams['business_name'] = $this->apiClient->getSerializer()->toFormValue($business_name);
+        // form params
+        $formParams['business_phone'] = $this->apiClient->getSerializer()->toFormValue($business_phone);
+        // form params
+        $formParams['business_address_line_1'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_1);
+        // form params
+        $formParams['business_address_line_2'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_2);
+        // form params
+        $formParams['business_address_line_3'] = $this->apiClient->getSerializer()->toFormValue($business_address_line_3);
+        // form params
+        $formParams['contact_full_name'] = $this->apiClient->getSerializer()->toFormValue($contact_full_name);
+        // form params
+        $formParams['contact_job_title'] = $this->apiClient->getSerializer()->toFormValue($contact_job_title);
+        // form params
+        $formParams['contact_email'] = $this->apiClient->getSerializer()->toFormValue($contact_email);
+        // form params
+        $formParams['contact_phone'] = $this->apiClient->getSerializer()->toFormValue($contact_phone);
+        
+
+        if( $options != null ) {
+          
+        }
+
+        
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {

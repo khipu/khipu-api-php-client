@@ -96,11 +96,12 @@ class PaymentsApi
      *
      * Obtener información de un pago
      *
-     * @param string $notification_token Token de notifiación recibido usando la API de notificaiones 1.3 o superior. (required)
+     * @param string $notification_token Token de notifiación recibido usando la API de notificaiones 1.3 o superior. (requerido)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\PaymentsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function paymentsGet($notification_token)
+    public function paymentsGet($notification_token, $options = null)
     {
         
         // verify the required parameter 'notification_token' is set
@@ -123,13 +124,38 @@ class PaymentsApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         // query params
-        if ($notification_token !== null) {
-            $queryParams['notification_token'] = $this->apiClient->getSerializer()->toQueryValue($notification_token);
+        $queryParams['notification_token'] = $this->apiClient->getSerializer()->toQueryValue($notification_token);
+        
+
+        if( $options != null ) {
+          
         }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
         
+
+        if( $options != null ) {
+          
+        }
+
         
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -213,30 +239,32 @@ class PaymentsApi
      *
      * Crear un pago
      *
-     * @param string $subject Motivo (required)
-     * @param string $currency El código de moneda en formato ISO-4217 (required)
-     * @param double $amount El monto del cobro. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda (required)
-     * @param string $transaction_id Identificador propio de la  transacción. Ej: número de factura u orden de compra (optional)
-     * @param string $custom Parámetro para enviar información personalizada de la transacción. Ej: documento XML con el detalle del carro de compra (optional)
-     * @param string $body Descripción del cobro (optional)
-     * @param string $bank_id Identificador del banco para usar en el pago (optional)
-     * @param string $return_url La dirección URL a donde enviar al cliente mientras el pago está siendo verificado (optional)
-     * @param string $cancel_url La dirección URL a donde enviar al cliente si decide no hacer hacer la transacción (optional)
-     * @param string $picture_url Una dirección URL de una foto de tu producto o servicio (optional)
-     * @param string $notify_url La dirección del web-service que utilizará khipu para notificar cuando el pago esté conciliado (optional)
-     * @param string $notify_api_version Versión de la API de notifiaciones para recibir avisos por web-service (optional)
-     * @param \DateTime $expires_date Fecha de expiración del cobro. Pasada esta fecha el cobro es inválido. Formato ISO-8601. Ej: 2017-03-01T13:00:00Z (optional)
-     * @param bool $send_email Si es &#39;true&#39;, se enviará una solicitud de cobro al correo especificado en &#39;payer_email&#39; (optional)
-     * @param string $payer_name Nombre del pagador. Es obligatorio cuando send_email es &#39;true&#39; (optional)
-     * @param string $payer_email Correo del pagador. Es obligatorio cuando send_email es &#39;true&#39; (optional)
-     * @param bool $send_reminders Si es &#39;true&#39;, se enviarán recordatorios de cobro. (optional)
-     * @param string $responsible_user_email Correo electrónico del responsable de este cobro, debe corresponder a un usuario khipu con permisos para cobrar usando esta cuenta de cobro (optional)
-     * @param string $fixed_payer_personal_identifier Identificador personal. Si se especifica, solo podrá ser pagado usando ese identificador (optional)
-     * @param double $integrator_fee Comisión para el integrador. Sólo es válido si la cuenta de cobro tiene una cuenta de integrador asociada (optional)
+     * @param string $subject Motivo (requerido)
+     * @param string $currency El código de moneda en formato ISO-4217 (requerido)
+     * @param double $amount El monto del cobro. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda (requerido)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
+     * - string 'transaction_id' Identificador propio de la  transacción. Ej: número de factura u orden de compra (opcional)
+     * - string 'custom' Parámetro para enviar información personalizada de la transacción. Ej: documento XML con el detalle del carro de compra (opcional)
+     * - string 'body' Descripción del cobro (opcional)
+     * - string 'bank_id' Identificador del banco para usar en el pago (opcional)
+     * - string 'return_url' La dirección URL a donde enviar al cliente mientras el pago está siendo verificado (opcional)
+     * - string 'cancel_url' La dirección URL a donde enviar al cliente si decide no hacer hacer la transacción (opcional)
+     * - string 'picture_url' Una dirección URL de una foto de tu producto o servicio (opcional)
+     * - string 'notify_url' La dirección del web-service que utilizará khipu para notificar cuando el pago esté conciliado (opcional)
+     * - string 'contract_url' La dirección URL del archivo PDF con el contrato a firmar mediante este pago. El cobrador debe estar habilitado para este servicio y el campo &#39;fixed_payer_personal_identifier&#39; es obgligatorio (opcional)
+     * - string 'notify_api_version' Versión de la API de notifiaciones para recibir avisos por web-service (opcional)
+     * - \DateTime 'expires_date' Fecha de expiración del cobro. Pasada esta fecha el cobro es inválido. Formato ISO-8601. Ej: 2017-03-01T13:00:00Z (opcional)
+     * - bool 'send_email' Si es &#39;true&#39;, se enviará una solicitud de cobro al correo especificado en &#39;payer_email&#39; (opcional)
+     * - string 'payer_name' Nombre del pagador. Es obligatorio cuando send_email es &#39;true&#39; (opcional)
+     * - string 'payer_email' Correo del pagador. Es obligatorio cuando send_email es &#39;true&#39; (opcional)
+     * - bool 'send_reminders' Si es &#39;true&#39;, se enviarán recordatorios de cobro. (opcional)
+     * - string 'responsible_user_email' Correo electrónico del responsable de este cobro, debe corresponder a un usuario khipu con permisos para cobrar usando esta cuenta de cobro (opcional)
+     * - string 'fixed_payer_personal_identifier' Identificador personal. Si se especifica, solo podrá ser pagado usando ese identificador (opcional)
+     * - double 'integrator_fee' Comisión para el integrador. Sólo es válido si la cuenta de cobro tiene una cuenta de integrador asociada (opcional)
      * @return \Khipu\Model\PaymentsCreateResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function paymentsPost($subject, $currency, $amount, $transaction_id=null, $custom=null, $body=null, $bank_id=null, $return_url=null, $cancel_url=null, $picture_url=null, $notify_url=null, $notify_api_version=null, $expires_date=null, $send_email=null, $payer_name=null, $payer_email=null, $send_reminders=null, $responsible_user_email=null, $fixed_payer_personal_identifier=null, $integrator_fee=null)
+    public function paymentsPost($subject, $currency, $amount, $options = null)
     {
         
         // verify the required parameter 'subject' is set
@@ -267,70 +295,96 @@ class PaymentsApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         
-        
-        
-        // form params
-        if ($subject !== null) {
-            $formParams['subject'] = $this->apiClient->getSerializer()->toFormValue($subject);
-        }// form params
-        if ($currency !== null) {
-            $formParams['currency'] = $this->apiClient->getSerializer()->toFormValue($currency);
-        }// form params
-        if ($amount !== null) {
-            $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($amount);
-        }// form params
-        if ($transaction_id !== null) {
-            $formParams['transaction_id'] = $this->apiClient->getSerializer()->toFormValue($transaction_id);
-        }// form params
-        if ($custom !== null) {
-            $formParams['custom'] = $this->apiClient->getSerializer()->toFormValue($custom);
-        }// form params
-        if ($body !== null) {
-            $formParams['body'] = $this->apiClient->getSerializer()->toFormValue($body);
-        }// form params
-        if ($bank_id !== null) {
-            $formParams['bank_id'] = $this->apiClient->getSerializer()->toFormValue($bank_id);
-        }// form params
-        if ($return_url !== null) {
-            $formParams['return_url'] = $this->apiClient->getSerializer()->toFormValue($return_url);
-        }// form params
-        if ($cancel_url !== null) {
-            $formParams['cancel_url'] = $this->apiClient->getSerializer()->toFormValue($cancel_url);
-        }// form params
-        if ($picture_url !== null) {
-            $formParams['picture_url'] = $this->apiClient->getSerializer()->toFormValue($picture_url);
-        }// form params
-        if ($notify_url !== null) {
-            $formParams['notify_url'] = $this->apiClient->getSerializer()->toFormValue($notify_url);
-        }// form params
-        if ($notify_api_version !== null) {
-            $formParams['notify_api_version'] = $this->apiClient->getSerializer()->toFormValue($notify_api_version);
-        }// form params
-        if ($expires_date !== null) {
-            $formParams['expires_date'] = $this->apiClient->getSerializer()->toFormValue($expires_date);
-        }// form params
-        if ($send_email !== null) {
-            $formParams['send_email'] = $this->apiClient->getSerializer()->toFormValue($send_email);
-        }// form params
-        if ($payer_name !== null) {
-            $formParams['payer_name'] = $this->apiClient->getSerializer()->toFormValue($payer_name);
-        }// form params
-        if ($payer_email !== null) {
-            $formParams['payer_email'] = $this->apiClient->getSerializer()->toFormValue($payer_email);
-        }// form params
-        if ($send_reminders !== null) {
-            $formParams['send_reminders'] = $this->apiClient->getSerializer()->toFormValue($send_reminders);
-        }// form params
-        if ($responsible_user_email !== null) {
-            $formParams['responsible_user_email'] = $this->apiClient->getSerializer()->toFormValue($responsible_user_email);
-        }// form params
-        if ($fixed_payer_personal_identifier !== null) {
-            $formParams['fixed_payer_personal_identifier'] = $this->apiClient->getSerializer()->toFormValue($fixed_payer_personal_identifier);
-        }// form params
-        if ($integrator_fee !== null) {
-            $formParams['integrator_fee'] = $this->apiClient->getSerializer()->toFormValue($integrator_fee);
+
+        if( $options != null ) {
+          
         }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
+        
+
+        if( $options != null ) {
+            
+        }
+
+        // form params
+        $formParams['subject'] = $this->apiClient->getSerializer()->toFormValue($subject);
+        // form params
+        $formParams['currency'] = $this->apiClient->getSerializer()->toFormValue($currency);
+        // form params
+        $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($amount);
+        
+
+        if( $options != null ) {
+          // form params
+          if ($options["transaction_id"] !== null) {
+            $formParams['transaction_id'] = $this->apiClient->getSerializer()->toFormValue($options["transaction_id"]);
+          }// form params
+          if ($options["custom"] !== null) {
+            $formParams['custom'] = $this->apiClient->getSerializer()->toFormValue($options["custom"]);
+          }// form params
+          if ($options["body"] !== null) {
+            $formParams['body'] = $this->apiClient->getSerializer()->toFormValue($options["body"]);
+          }// form params
+          if ($options["bank_id"] !== null) {
+            $formParams['bank_id'] = $this->apiClient->getSerializer()->toFormValue($options["bank_id"]);
+          }// form params
+          if ($options["return_url"] !== null) {
+            $formParams['return_url'] = $this->apiClient->getSerializer()->toFormValue($options["return_url"]);
+          }// form params
+          if ($options["cancel_url"] !== null) {
+            $formParams['cancel_url'] = $this->apiClient->getSerializer()->toFormValue($options["cancel_url"]);
+          }// form params
+          if ($options["picture_url"] !== null) {
+            $formParams['picture_url'] = $this->apiClient->getSerializer()->toFormValue($options["picture_url"]);
+          }// form params
+          if ($options["notify_url"] !== null) {
+            $formParams['notify_url'] = $this->apiClient->getSerializer()->toFormValue($options["notify_url"]);
+          }// form params
+          if ($options["contract_url"] !== null) {
+            $formParams['contract_url'] = $this->apiClient->getSerializer()->toFormValue($options["contract_url"]);
+          }// form params
+          if ($options["notify_api_version"] !== null) {
+            $formParams['notify_api_version'] = $this->apiClient->getSerializer()->toFormValue($options["notify_api_version"]);
+          }// form params
+          if ($options["expires_date"] !== null) {
+            $formParams['expires_date'] = $this->apiClient->getSerializer()->toFormValue($options["expires_date"]);
+          }// form params
+          if ($options["send_email"] !== null) {
+            $formParams['send_email'] = $this->apiClient->getSerializer()->toFormValue($options["send_email"]);
+          }// form params
+          if ($options["payer_name"] !== null) {
+            $formParams['payer_name'] = $this->apiClient->getSerializer()->toFormValue($options["payer_name"]);
+          }// form params
+          if ($options["payer_email"] !== null) {
+            $formParams['payer_email'] = $this->apiClient->getSerializer()->toFormValue($options["payer_email"]);
+          }// form params
+          if ($options["send_reminders"] !== null) {
+            $formParams['send_reminders'] = $this->apiClient->getSerializer()->toFormValue($options["send_reminders"]);
+          }// form params
+          if ($options["responsible_user_email"] !== null) {
+            $formParams['responsible_user_email'] = $this->apiClient->getSerializer()->toFormValue($options["responsible_user_email"]);
+          }// form params
+          if ($options["fixed_payer_personal_identifier"] !== null) {
+            $formParams['fixed_payer_personal_identifier'] = $this->apiClient->getSerializer()->toFormValue($options["fixed_payer_personal_identifier"]);
+          }// form params
+          if ($options["integrator_fee"] !== null) {
+            $formParams['integrator_fee'] = $this->apiClient->getSerializer()->toFormValue($options["integrator_fee"]);
+          }
+        }
+
+        
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -414,11 +468,12 @@ class PaymentsApi
      *
      * Obtener información de un pago
      *
-     * @param string $id Identificador del pago (required)
+     * @param string $id Identificador del pago (requerido)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\PaymentsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function paymentsIdGet($id)
+    public function paymentsIdGet($id, $options = null)
     {
         
         // verify the required parameter 'id' is set
@@ -441,17 +496,42 @@ class PaymentsApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         
+
+        if( $options != null ) {
+          
+        }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
         // path params
-        if ($id !== null) {
             $resourcePath = str_replace(
                 "{" . "id" . "}",
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
+        
+
+        if( $options != null ) {
+            
         }
+
         
+
+        if( $options != null ) {
+          
+        }
+
         
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -535,11 +615,12 @@ class PaymentsApi
      *
      * Borrar un pago
      *
-     * @param string $id Identificador del pago (required)
+     * @param string $id Identificador del pago (requerido)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function paymentsIdDelete($id)
+    public function paymentsIdDelete($id, $options = null)
     {
         
         // verify the required parameter 'id' is set
@@ -562,17 +643,42 @@ class PaymentsApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         
+
+        if( $options != null ) {
+          
+        }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
         // path params
-        if ($id !== null) {
             $resourcePath = str_replace(
                 "{" . "id" . "}",
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
+        
+
+        if( $options != null ) {
+            
         }
+
         
+
+        if( $options != null ) {
+          
+        }
+
         
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -656,12 +762,13 @@ class PaymentsApi
      *
      * Reembolsar total o parcialmente un pago
      *
-     * @param string $id Identificador del pago (required)
-     * @param double $amount El monto a devolver. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda. Si se omite el reembolso se hará por el total del monto del pago. (optional)
+     * @param string $id Identificador del pago (requerido)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
+     * - double 'amount' El monto a devolver. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda. Si se omite el reembolso se hará por el total del monto del pago. (opcional)
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function paymentsIdRefundsPost($id, $amount=null)
+    public function paymentsIdRefundsPost($id, $options = null)
     {
         
         // verify the required parameter 'id' is set
@@ -684,20 +791,45 @@ class PaymentsApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         
+
+        if( $options != null ) {
+          
+        }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
         // path params
-        if ($id !== null) {
             $resourcePath = str_replace(
                 "{" . "id" . "}",
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
-        }
-        // form params
-        if ($amount !== null) {
-            $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($amount);
-        }
         
+
+        if( $options != null ) {
+            
+        }
+
+        
+
+        if( $options != null ) {
+          // form params
+          if ($options["amount"] !== null) {
+            $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($options["amount"]);
+          }
+        }
+
+        
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {

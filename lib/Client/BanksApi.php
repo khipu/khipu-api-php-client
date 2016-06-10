@@ -96,10 +96,11 @@ class BanksApi
      *
      * Obtener listado de bancos
      *
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\BanksResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function banksGet()
+    public function banksGet($options = null)
     {
         
   
@@ -118,10 +119,36 @@ class BanksApi
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
         
+
+        if( $options != null ) {
+          
+        }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
+
         
+
+        if( $options != null ) {
+            
+        }
+
         
+
+        if( $options != null ) {
+          
+        }
+
         
+
+        if( $options != null ) {
+            
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
