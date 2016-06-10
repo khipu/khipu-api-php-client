@@ -27,7 +27,11 @@ $exp->setDate(2015, 11, 3);
 $kh = new Khipu\Client\PaymentsApi($cl);
 
 try {
-    $resp = $kh->paymentsPost("Test de api", "CLP", 1570, null, null, "test body", null, null, null, null, null, null, $exp);
+    $opts = array(
+    	"expires_date" => $exp,
+    	"body" => "test body"
+    );
+    $resp = $kh->paymentsPost("Test de api", "CLP", 1570, $opts);
     print_r($resp);
     $r2 = $kh->paymentsIdGet($resp->getPaymentId());
     print_r($r2);
