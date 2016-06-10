@@ -324,58 +324,58 @@ class PaymentsApi
 
         if( $options != null ) {
           // form params
-          if ($options["transaction_id"] !== null) {
+          if (array_key_exists("transaction_id", $options) && $options["transaction_id"] != null) {
             $formParams['transaction_id'] = $this->apiClient->getSerializer()->toFormValue($options["transaction_id"]);
           }// form params
-          if ($options["custom"] !== null) {
+          if (array_key_exists("custom", $options) && $options["custom"] != null) {
             $formParams['custom'] = $this->apiClient->getSerializer()->toFormValue($options["custom"]);
           }// form params
-          if ($options["body"] !== null) {
+          if (array_key_exists("body", $options) && $options["body"] != null) {
             $formParams['body'] = $this->apiClient->getSerializer()->toFormValue($options["body"]);
           }// form params
-          if ($options["bank_id"] !== null) {
+          if (array_key_exists("bank_id", $options) && $options["bank_id"] != null) {
             $formParams['bank_id'] = $this->apiClient->getSerializer()->toFormValue($options["bank_id"]);
           }// form params
-          if ($options["return_url"] !== null) {
+          if (array_key_exists("return_url", $options) && $options["return_url"] != null) {
             $formParams['return_url'] = $this->apiClient->getSerializer()->toFormValue($options["return_url"]);
           }// form params
-          if ($options["cancel_url"] !== null) {
+          if (array_key_exists("cancel_url", $options) && $options["cancel_url"] != null) {
             $formParams['cancel_url'] = $this->apiClient->getSerializer()->toFormValue($options["cancel_url"]);
           }// form params
-          if ($options["picture_url"] !== null) {
+          if (array_key_exists("picture_url", $options) && $options["picture_url"] != null) {
             $formParams['picture_url'] = $this->apiClient->getSerializer()->toFormValue($options["picture_url"]);
           }// form params
-          if ($options["notify_url"] !== null) {
+          if (array_key_exists("notify_url", $options) && $options["notify_url"] != null) {
             $formParams['notify_url'] = $this->apiClient->getSerializer()->toFormValue($options["notify_url"]);
           }// form params
-          if ($options["contract_url"] !== null) {
+          if (array_key_exists("contract_url", $options) && $options["contract_url"] != null) {
             $formParams['contract_url'] = $this->apiClient->getSerializer()->toFormValue($options["contract_url"]);
           }// form params
-          if ($options["notify_api_version"] !== null) {
+          if (array_key_exists("notify_api_version", $options) && $options["notify_api_version"] != null) {
             $formParams['notify_api_version'] = $this->apiClient->getSerializer()->toFormValue($options["notify_api_version"]);
           }// form params
-          if ($options["expires_date"] !== null) {
+          if (array_key_exists("expires_date", $options) && $options["expires_date"] != null) {
             $formParams['expires_date'] = $this->apiClient->getSerializer()->toFormValue($options["expires_date"]);
           }// form params
-          if ($options["send_email"] !== null) {
+          if (array_key_exists("send_email", $options) && $options["send_email"] != null) {
             $formParams['send_email'] = $this->apiClient->getSerializer()->toFormValue($options["send_email"]);
           }// form params
-          if ($options["payer_name"] !== null) {
+          if (array_key_exists("payer_name", $options) && $options["payer_name"] != null) {
             $formParams['payer_name'] = $this->apiClient->getSerializer()->toFormValue($options["payer_name"]);
           }// form params
-          if ($options["payer_email"] !== null) {
+          if (array_key_exists("payer_email", $options) && $options["payer_email"] != null) {
             $formParams['payer_email'] = $this->apiClient->getSerializer()->toFormValue($options["payer_email"]);
           }// form params
-          if ($options["send_reminders"] !== null) {
+          if (array_key_exists("send_reminders", $options) && $options["send_reminders"] != null) {
             $formParams['send_reminders'] = $this->apiClient->getSerializer()->toFormValue($options["send_reminders"]);
           }// form params
-          if ($options["responsible_user_email"] !== null) {
+          if (array_key_exists("responsible_user_email", $options) && $options["responsible_user_email"] != null) {
             $formParams['responsible_user_email'] = $this->apiClient->getSerializer()->toFormValue($options["responsible_user_email"]);
           }// form params
-          if ($options["fixed_payer_personal_identifier"] !== null) {
+          if (array_key_exists("fixed_payer_personal_identifier", $options) && $options["fixed_payer_personal_identifier"] != null) {
             $formParams['fixed_payer_personal_identifier'] = $this->apiClient->getSerializer()->toFormValue($options["fixed_payer_personal_identifier"]);
           }// form params
-          if ($options["integrator_fee"] !== null) {
+          if (array_key_exists("integrator_fee", $options) && $options["integrator_fee"] != null) {
             $formParams['integrator_fee'] = $this->apiClient->getSerializer()->toFormValue($options["integrator_fee"]);
           }
         }
@@ -820,7 +820,7 @@ class PaymentsApi
 
         if( $options != null ) {
           // form params
-          if ($options["amount"] !== null) {
+          if (array_key_exists("amount", $options) && $options["amount"] != null) {
             $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($options["amount"]);
           }
         }
