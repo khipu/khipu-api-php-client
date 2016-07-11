@@ -100,37 +100,37 @@ class PaymentsCreateResponse implements ArrayAccess
   
     
     /**
-      * $payment_id 
+      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
       * @var string
       */
     protected $payment_id;
     
     /**
-      * $payment_url 
+      * $payment_url URL principal del pago, si el usuario no ha elegido previamente un método de pago se le muestran las opciones
       * @var string
       */
     protected $payment_url;
     
     /**
-      * $simplified_transfer_url 
+      * $simplified_transfer_url URL de pago simplificado
       * @var string
       */
     protected $simplified_transfer_url;
     
     /**
-      * $transfer_url 
+      * $transfer_url URL de pago normal
       * @var string
       */
     protected $transfer_url;
     
     /**
-      * $app_url 
+      * $app_url URL para invocar el pago desde un dispositivo móvil usando la APP de khipu
       * @var string
       */
     protected $app_url;
     
     /**
-      * $ready_for_terminal 
+      * $ready_for_terminal Es 'true' si el pago ya cuenta con todos los datos necesarios para abrir directamente la aplicación de pagos khipu
       * @var bool
       */
     protected $ready_for_terminal;
@@ -163,7 +163,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets payment_id
-     * @param string $payment_id 
+     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
      * @return $this
      */
     public function setPaymentId($payment_id)
@@ -184,7 +184,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets payment_url
-     * @param string $payment_url 
+     * @param string $payment_url URL principal del pago, si el usuario no ha elegido previamente un método de pago se le muestran las opciones
      * @return $this
      */
     public function setPaymentUrl($payment_url)
@@ -205,7 +205,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets simplified_transfer_url
-     * @param string $simplified_transfer_url 
+     * @param string $simplified_transfer_url URL de pago simplificado
      * @return $this
      */
     public function setSimplifiedTransferUrl($simplified_transfer_url)
@@ -226,7 +226,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets transfer_url
-     * @param string $transfer_url 
+     * @param string $transfer_url URL de pago normal
      * @return $this
      */
     public function setTransferUrl($transfer_url)
@@ -247,7 +247,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets app_url
-     * @param string $app_url 
+     * @param string $app_url URL para invocar el pago desde un dispositivo móvil usando la APP de khipu
      * @return $this
      */
     public function setAppUrl($app_url)
@@ -268,7 +268,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets ready_for_terminal
-     * @param bool $ready_for_terminal 
+     * @param bool $ready_for_terminal Es 'true' si el pago ya cuenta con todos los datos necesarios para abrir directamente la aplicación de pagos khipu
      * @return $this
      */
     public function setReadyForTerminal($ready_for_terminal)

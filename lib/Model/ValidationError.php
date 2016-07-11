@@ -88,13 +88,13 @@ class ValidationError implements ArrayAccess
   
     
     /**
-      * $status 
+      * $status Código del error
       * @var int
       */
     protected $status;
     
     /**
-      * $message 
+      * $message Mensaje del error
       * @var string
       */
     protected $message;
@@ -130,7 +130,7 @@ class ValidationError implements ArrayAccess
   
     /**
      * Sets status
-     * @param int $status 
+     * @param int $status Código del error
      * @return $this
      */
     public function setStatus($status)
@@ -151,7 +151,7 @@ class ValidationError implements ArrayAccess
   
     /**
      * Sets message
-     * @param string $message 
+     * @param string $message Mensaje del error
      * @return $this
      */
     public function setMessage($message)

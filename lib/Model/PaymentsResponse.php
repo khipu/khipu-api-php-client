@@ -85,7 +85,8 @@ class PaymentsResponse implements ArrayAccess
         'custom' => 'string',
         'responsible_user_email' => 'string',
         'send_reminders' => 'bool',
-        'send_email' => 'bool'
+        'send_email' => 'bool',
+        'payment_method' => 'string'
     );
   
     /** 
@@ -127,7 +128,8 @@ class PaymentsResponse implements ArrayAccess
         'custom' => 'custom',
         'responsible_user_email' => 'responsible_user_email',
         'send_reminders' => 'send_reminders',
-        'send_email' => 'send_email'
+        'send_email' => 'send_email',
+        'payment_method' => 'payment_method'
     );
   
     /**
@@ -169,7 +171,8 @@ class PaymentsResponse implements ArrayAccess
         'custom' => 'setCustom',
         'responsible_user_email' => 'setResponsibleUserEmail',
         'send_reminders' => 'setSendReminders',
-        'send_email' => 'setSendEmail'
+        'send_email' => 'setSendEmail',
+        'payment_method' => 'setPaymentMethod'
     );
   
     /**
@@ -211,66 +214,67 @@ class PaymentsResponse implements ArrayAccess
         'custom' => 'getCustom',
         'responsible_user_email' => 'getResponsibleUserEmail',
         'send_reminders' => 'getSendReminders',
-        'send_email' => 'getSendEmail'
+        'send_email' => 'getSendEmail',
+        'payment_method' => 'getPaymentMethod'
     );
   
     
     /**
-      * $payment_id 
+      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
       * @var string
       */
     protected $payment_id;
     
     /**
-      * $payment_url 
+      * $payment_url URL principal del pago, si el usuario no ha elegido previamente un método de pago se le muestran las opciones
       * @var string
       */
     protected $payment_url;
     
     /**
-      * $simplified_transfer_url 
+      * $simplified_transfer_url URL de pago simplificado
       * @var string
       */
     protected $simplified_transfer_url;
     
     /**
-      * $transfer_url 
+      * $transfer_url URL de pago normal
       * @var string
       */
     protected $transfer_url;
     
     /**
-      * $app_url 
+      * $app_url URL para invocar el pago desde un dispositivo móvil usando la APP de khipu
       * @var string
       */
     protected $app_url;
     
     /**
-      * $ready_for_terminal 
+      * $ready_for_terminal Es 'true' si el pago ya cuenta con todos los datos necesarios para abrir directamente la aplicación de pagos khipu
       * @var bool
       */
     protected $ready_for_terminal;
     
     /**
-      * $notification_token 
+      * $notification_token Cadena de caracteres alfanuméricos que identifican unicamente al pago, es el identificador que el servidor de khipu enviará al servidor del comercio cuando notifique que un pago está conciliado
       * @var string
       */
     protected $notification_token;
     
     /**
-      * $receiver_id 
+      * $receiver_id Identificador único de una cuenta de cobro
       * @var int
       */
     protected $receiver_id;
     
     /**
-      * $conciliation_date 
+      * $conciliation_date Fecha y hora de conciliación del pago. Formato ISO-8601. Ej: 2017-03-01T13:00:00Z
       * @var \DateTime
       */
     protected $conciliation_date;
     
     /**
-      * $subject 
+      * $subject Motivo del pago
       * @var string
       */
     protected $subject;
@@ -282,148 +286,154 @@ class PaymentsResponse implements ArrayAccess
     protected $amount;
     
     /**
-      * $currency 
+      * $currency El código de moneda en formato ISO-4217
       * @var string
       */
     protected $currency;
     
     /**
-      * $status 
+      * $status Estado del pago, puede ser 'pending' (el pagador aún no comienza a pagar), 'verifying' (se está verificando el pago) o 'done', cuando el pago ya está confirmado
       * @var string
       */
     protected $status;
     
     /**
-      * $status_detail 
+      * $status_detail Detalle del estado del pago, 'pending' (el pagadon aún no comienza a pagar), 'normal' (el pago fue verificado y fue cancelado por algún medio de pago estandar), 'marked-paid-by-receiver' (el cobrador marco el cobro como pagado por otro medio), 'rejected-by-payer' (el pagador declaró que no pagará), 'marked-as-abuse' (el pagador declaró que no pagará y que el cobro fue no solicitado) y 'reversed' (el pago fue anulado por el comercio, el dinero fue devuelto al pagador).
       * @var string
       */
     protected $status_detail;
     
     /**
-      * $body 
+      * $body Detalle del cobro
       * @var string
       */
     protected $body;
     
     /**
-      * $picture_url 
+      * $picture_url URL de cobro
       * @var string
       */
     protected $picture_url;
     
     /**
-      * $receipt_url 
+      * $receipt_url URL del comprobante de pago
       * @var string
       */
     protected $receipt_url;
     
     /**
-      * $return_url 
+      * $return_url URL donde se redirige al pagador luego que termina el pago
       * @var string
       */
     protected $return_url;
     
     /**
-      * $cancel_url 
+      * $cancel_url URL donde se redirige al pagador luego de que desiste hacer el pago
       * @var string
       */
     protected $cancel_url;
     
     /**
-      * $notify_url 
+      * $notify_url URL del webservice donde se notificará el pago
       * @var string
       */
     protected $notify_url;
     
     /**
-      * $notify_api_version 
+      * $notify_api_version Versión de la api de notificación
       * @var string
       */
     protected $notify_api_version;
     
     /**
-      * $expires_date 
+      * $expires_date Fecha de expiración del pago. En formato ISO-8601
       * @var \DateTime
       */
     protected $expires_date;
     
     /**
-      * $attachment_urls 
+      * $attachment_urls URLs de archivos adjuntos al pago
       * @var string[]
       */
     protected $attachment_urls;
     
     /**
-      * $bank 
+      * $bank Nombre del banco seleccionado por el pagador
       * @var string
       */
     protected $bank;
     
     /**
-      * $bank_id 
+      * $bank_id Identificador del banco seleccionado por el pagador
       * @var string
       */
     protected $bank_id;
     
     /**
-      * $payer_name 
+      * $payer_name Nombre del pagador
       * @var string
       */
     protected $payer_name;
     
     /**
-      * $payer_email 
+      * $payer_email Correo electrónico del pagador
       * @var string
       */
     protected $payer_email;
     
     /**
-      * $personal_identifier 
+      * $personal_identifier Identificador personal del pagador
       * @var string
       */
     protected $personal_identifier;
     
     /**
-      * $bank_account_number 
+      * $bank_account_number Número de cuenta bancaria del pagador
       * @var string
       */
     protected $bank_account_number;
     
     /**
-      * $out_of_date_conciliation 
+      * $out_of_date_conciliation Es 'true' si la conciliación del pago fue hecha luego de la fecha de expiración
       * @var bool
       */
     protected $out_of_date_conciliation;
     
     /**
-      * $transaction_id 
+      * $transaction_id Identificador del pago asignado por el cobrador
       * @var string
       */
     protected $transaction_id;
     
     /**
-      * $custom 
+      * $custom Campo genérico que asigna el cobrador al momento de hacer el pago
       * @var string
       */
     protected $custom;
     
     /**
-      * $responsible_user_email 
+      * $responsible_user_email Correo electrónico de la persona responsable del pago
       * @var string
       */
     protected $responsible_user_email;
     
     /**
-      * $send_reminders 
+      * $send_reminders Es 'true' cuando este es un cobro por correo electrónico y khipu enviará recordatorios
       * @var bool
       */
     protected $send_reminders;
     
     /**
-      * $send_email 
+      * $send_email Es 'true' cuando khipu enviará el cobro por correo electrónico
       * @var bool
       */
     protected $send_email;
+    
+    /**
+      * $payment_method Método de pago usado por el pagador, puede ser 'regular_transfer' (transferencia normal), 'simplified_transfer' (transferencia simplificada) o 'not_available' (para un pago marcado como realizado por otro medio por el cobrador).
+      * @var string
+      */
+    protected $payment_method;
     
 
     /**
@@ -468,6 +478,7 @@ class PaymentsResponse implements ArrayAccess
             $this->responsible_user_email = $data["responsible_user_email"];
             $this->send_reminders = $data["send_reminders"];
             $this->send_email = $data["send_email"];
+            $this->payment_method = $data["payment_method"];
         }
     }
     
@@ -482,7 +493,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets payment_id
-     * @param string $payment_id 
+     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
      * @return $this
      */
     public function setPaymentId($payment_id)
@@ -503,7 +514,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets payment_url
-     * @param string $payment_url 
+     * @param string $payment_url URL principal del pago, si el usuario no ha elegido previamente un método de pago se le muestran las opciones
      * @return $this
      */
     public function setPaymentUrl($payment_url)
@@ -524,7 +535,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets simplified_transfer_url
-     * @param string $simplified_transfer_url 
+     * @param string $simplified_transfer_url URL de pago simplificado
      * @return $this
      */
     public function setSimplifiedTransferUrl($simplified_transfer_url)
@@ -545,7 +556,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets transfer_url
-     * @param string $transfer_url 
+     * @param string $transfer_url URL de pago normal
      * @return $this
      */
     public function setTransferUrl($transfer_url)
@@ -566,7 +577,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets app_url
-     * @param string $app_url 
+     * @param string $app_url URL para invocar el pago desde un dispositivo móvil usando la APP de khipu
      * @return $this
      */
     public function setAppUrl($app_url)
@@ -587,7 +598,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets ready_for_terminal
-     * @param bool $ready_for_terminal 
+     * @param bool $ready_for_terminal Es 'true' si el pago ya cuenta con todos los datos necesarios para abrir directamente la aplicación de pagos khipu
      * @return $this
      */
     public function setReadyForTerminal($ready_for_terminal)
@@ -608,7 +619,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets notification_token
-     * @param string $notification_token 
+     * @param string $notification_token Cadena de caracteres alfanuméricos que identifican unicamente al pago, es el identificador que el servidor de khipu enviará al servidor del comercio cuando notifique que un pago está conciliado
      * @return $this
      */
     public function setNotificationToken($notification_token)
@@ -629,7 +640,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets receiver_id
-     * @param int $receiver_id 
+     * @param int $receiver_id Identificador único de una cuenta de cobro
      * @return $this
      */
     public function setReceiverId($receiver_id)
@@ -650,7 +661,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets conciliation_date
-     * @param \DateTime $conciliation_date 
+     * @param \DateTime $conciliation_date Fecha y hora de conciliación del pago. Formato ISO-8601. Ej: 2017-03-01T13:00:00Z
      * @return $this
      */
     public function setConciliationDate($conciliation_date)
@@ -671,7 +682,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets subject
-     * @param string $subject 
+     * @param string $subject Motivo del pago
      * @return $this
      */
     public function setSubject($subject)
@@ -713,7 +724,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets currency
-     * @param string $currency 
+     * @param string $currency El código de moneda en formato ISO-4217
      * @return $this
      */
     public function setCurrency($currency)
@@ -734,7 +745,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets status
-     * @param string $status 
+     * @param string $status Estado del pago, puede ser 'pending' (el pagador aún no comienza a pagar), 'verifying' (se está verificando el pago) o 'done', cuando el pago ya está confirmado
      * @return $this
      */
     public function setStatus($status)
@@ -755,7 +766,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets status_detail
-     * @param string $status_detail 
+     * @param string $status_detail Detalle del estado del pago, 'pending' (el pagadon aún no comienza a pagar), 'normal' (el pago fue verificado y fue cancelado por algún medio de pago estandar), 'marked-paid-by-receiver' (el cobrador marco el cobro como pagado por otro medio), 'rejected-by-payer' (el pagador declaró que no pagará), 'marked-as-abuse' (el pagador declaró que no pagará y que el cobro fue no solicitado) y 'reversed' (el pago fue anulado por el comercio, el dinero fue devuelto al pagador).
      * @return $this
      */
     public function setStatusDetail($status_detail)
@@ -776,7 +787,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets body
-     * @param string $body 
+     * @param string $body Detalle del cobro
      * @return $this
      */
     public function setBody($body)
@@ -797,7 +808,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets picture_url
-     * @param string $picture_url 
+     * @param string $picture_url URL de cobro
      * @return $this
      */
     public function setPictureUrl($picture_url)
@@ -818,7 +829,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets receipt_url
-     * @param string $receipt_url 
+     * @param string $receipt_url URL del comprobante de pago
      * @return $this
      */
     public function setReceiptUrl($receipt_url)
@@ -839,7 +850,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets return_url
-     * @param string $return_url 
+     * @param string $return_url URL donde se redirige al pagador luego que termina el pago
      * @return $this
      */
     public function setReturnUrl($return_url)
@@ -860,7 +871,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets cancel_url
-     * @param string $cancel_url 
+     * @param string $cancel_url URL donde se redirige al pagador luego de que desiste hacer el pago
      * @return $this
      */
     public function setCancelUrl($cancel_url)
@@ -881,7 +892,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets notify_url
-     * @param string $notify_url 
+     * @param string $notify_url URL del webservice donde se notificará el pago
      * @return $this
      */
     public function setNotifyUrl($notify_url)
@@ -902,7 +913,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets notify_api_version
-     * @param string $notify_api_version 
+     * @param string $notify_api_version Versión de la api de notificación
      * @return $this
      */
     public function setNotifyApiVersion($notify_api_version)
@@ -923,7 +934,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets expires_date
-     * @param \DateTime $expires_date 
+     * @param \DateTime $expires_date Fecha de expiración del pago. En formato ISO-8601
      * @return $this
      */
     public function setExpiresDate($expires_date)
@@ -944,7 +955,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets attachment_urls
-     * @param string[] $attachment_urls 
+     * @param string[] $attachment_urls URLs de archivos adjuntos al pago
      * @return $this
      */
     public function setAttachmentUrls($attachment_urls)
@@ -965,7 +976,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets bank
-     * @param string $bank 
+     * @param string $bank Nombre del banco seleccionado por el pagador
      * @return $this
      */
     public function setBank($bank)
@@ -986,7 +997,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets bank_id
-     * @param string $bank_id 
+     * @param string $bank_id Identificador del banco seleccionado por el pagador
      * @return $this
      */
     public function setBankId($bank_id)
@@ -1007,7 +1018,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets payer_name
-     * @param string $payer_name 
+     * @param string $payer_name Nombre del pagador
      * @return $this
      */
     public function setPayerName($payer_name)
@@ -1028,7 +1039,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets payer_email
-     * @param string $payer_email 
+     * @param string $payer_email Correo electrónico del pagador
      * @return $this
      */
     public function setPayerEmail($payer_email)
@@ -1049,7 +1060,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets personal_identifier
-     * @param string $personal_identifier 
+     * @param string $personal_identifier Identificador personal del pagador
      * @return $this
      */
     public function setPersonalIdentifier($personal_identifier)
@@ -1070,7 +1081,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets bank_account_number
-     * @param string $bank_account_number 
+     * @param string $bank_account_number Número de cuenta bancaria del pagador
      * @return $this
      */
     public function setBankAccountNumber($bank_account_number)
@@ -1091,7 +1102,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets out_of_date_conciliation
-     * @param bool $out_of_date_conciliation 
+     * @param bool $out_of_date_conciliation Es 'true' si la conciliación del pago fue hecha luego de la fecha de expiración
      * @return $this
      */
     public function setOutOfDateConciliation($out_of_date_conciliation)
@@ -1112,7 +1123,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets transaction_id
-     * @param string $transaction_id 
+     * @param string $transaction_id Identificador del pago asignado por el cobrador
      * @return $this
      */
     public function setTransactionId($transaction_id)
@@ -1133,7 +1144,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets custom
-     * @param string $custom 
+     * @param string $custom Campo genérico que asigna el cobrador al momento de hacer el pago
      * @return $this
      */
     public function setCustom($custom)
@@ -1154,7 +1165,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets responsible_user_email
-     * @param string $responsible_user_email 
+     * @param string $responsible_user_email Correo electrónico de la persona responsable del pago
      * @return $this
      */
     public function setResponsibleUserEmail($responsible_user_email)
@@ -1175,7 +1186,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets send_reminders
-     * @param bool $send_reminders 
+     * @param bool $send_reminders Es 'true' cuando este es un cobro por correo electrónico y khipu enviará recordatorios
      * @return $this
      */
     public function setSendReminders($send_reminders)
@@ -1196,13 +1207,34 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets send_email
-     * @param bool $send_email 
+     * @param bool $send_email Es 'true' cuando khipu enviará el cobro por correo electrónico
      * @return $this
      */
     public function setSendEmail($send_email)
     {
         
         $this->send_email = $send_email;
+        return $this;
+    }
+    
+    /**
+     * Gets payment_method
+     * @return string
+     */
+    public function getPaymentMethod()
+    {
+        return $this->payment_method;
+    }
+  
+    /**
+     * Sets payment_method
+     * @param string $payment_method Método de pago usado por el pagador, puede ser 'regular_transfer' (transferencia normal), 'simplified_transfer' (transferencia simplificada) o 'not_available' (para un pago marcado como realizado por otro medio por el cobrador).
+     * @return $this
+     */
+    public function setPaymentMethod($payment_method)
+    {
+        
+        $this->payment_method = $payment_method;
         return $this;
     }
     

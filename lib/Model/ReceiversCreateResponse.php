@@ -84,13 +84,13 @@ class ReceiversCreateResponse implements ArrayAccess
   
     
     /**
-      * $receiver_id 
+      * $receiver_id Identificador único de la cuenta de cobro
       * @var string
       */
     protected $receiver_id;
     
     /**
-      * $secret 
+      * $secret Llave secreta de la cuenta de cobro, se usa para firmar todas las peticiones
       * @var string
       */
     protected $secret;
@@ -119,7 +119,7 @@ class ReceiversCreateResponse implements ArrayAccess
   
     /**
      * Sets receiver_id
-     * @param string $receiver_id 
+     * @param string $receiver_id Identificador único de la cuenta de cobro
      * @return $this
      */
     public function setReceiverId($receiver_id)
@@ -140,7 +140,7 @@ class ReceiversCreateResponse implements ArrayAccess
   
     /**
      * Sets secret
-     * @param string $secret 
+     * @param string $secret Llave secreta de la cuenta de cobro, se usa para firmar todas las peticiones
      * @return $this
      */
     public function setSecret($secret)

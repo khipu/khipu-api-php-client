@@ -80,7 +80,7 @@ class SuccessResponse implements ArrayAccess
   
     
     /**
-      * $message 
+      * $message Mensaje a desplegar al usuario
       * @var string
       */
     protected $message;
@@ -108,7 +108,7 @@ class SuccessResponse implements ArrayAccess
   
     /**
      * Sets message
-     * @param string $message 
+     * @param string $message Mensaje a desplegar al usuario
      * @return $this
      */
     public function setMessage($message)

@@ -100,37 +100,37 @@ class BankItem implements ArrayAccess
   
     
     /**
-      * $bank_id 
+      * $bank_id Identificador del banco
       * @var string
       */
     protected $bank_id;
     
     /**
-      * $name 
+      * $name Nombre del banco
       * @var string
       */
     protected $name;
     
     /**
-      * $message 
+      * $message Mensaje con particularidades del banco
       * @var string
       */
     protected $message;
     
     /**
-      * $min_amount 
+      * $min_amount Monto mínimo que acepta el banco en un pago
       * @var double
       */
     protected $min_amount;
     
     /**
-      * $type 
+      * $type Tipo de banco
       * @var string
       */
     protected $type;
     
     /**
-      * $parent 
+      * $parent Identificador del banco padre (si un banco tiene banca personas y empresas, el primero será el padre del segundo)
       * @var string
       */
     protected $parent;
@@ -163,7 +163,7 @@ class BankItem implements ArrayAccess
   
     /**
      * Sets bank_id
-     * @param string $bank_id 
+     * @param string $bank_id Identificador del banco
      * @return $this
      */
     public function setBankId($bank_id)
@@ -184,7 +184,7 @@ class BankItem implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name 
+     * @param string $name Nombre del banco
      * @return $this
      */
     public function setName($name)
@@ -205,7 +205,7 @@ class BankItem implements ArrayAccess
   
     /**
      * Sets message
-     * @param string $message 
+     * @param string $message Mensaje con particularidades del banco
      * @return $this
      */
     public function setMessage($message)
@@ -226,7 +226,7 @@ class BankItem implements ArrayAccess
   
     /**
      * Sets min_amount
-     * @param double $min_amount 
+     * @param double $min_amount Monto mínimo que acepta el banco en un pago
      * @return $this
      */
     public function setMinAmount($min_amount)
@@ -247,7 +247,7 @@ class BankItem implements ArrayAccess
   
     /**
      * Sets type
-     * @param string $type 
+     * @param string $type Tipo de banco
      * @return $this
      */
     public function setType($type)
@@ -268,7 +268,7 @@ class BankItem implements ArrayAccess
   
     /**
      * Sets parent
-     * @param string $parent 
+     * @param string $parent Identificador del banco padre (si un banco tiene banca personas y empresas, el primero será el padre del segundo)
      * @return $this
      */
     public function setParent($parent)

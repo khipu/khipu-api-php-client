@@ -84,13 +84,13 @@ class ErrorItem implements ArrayAccess
   
     
     /**
-      * $field 
+      * $field Campo que tiene el error de validación
       * @var string
       */
     protected $field;
     
     /**
-      * $message 
+      * $message Motivo del error de validación
       * @var string
       */
     protected $message;
@@ -119,7 +119,7 @@ class ErrorItem implements ArrayAccess
   
     /**
      * Sets field
-     * @param string $field 
+     * @param string $field Campo que tiene el error de validación
      * @return $this
      */
     public function setField($field)
@@ -140,7 +140,7 @@ class ErrorItem implements ArrayAccess
   
     /**
      * Sets message
-     * @param string $message 
+     * @param string $message Motivo del error de validación
      * @return $this
      */
     public function setMessage($message)
