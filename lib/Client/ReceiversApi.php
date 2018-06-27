@@ -112,6 +112,12 @@ class ReceiversApi
      * @param string $contact_email Correo electrónico del contacto del cobrador. (requerido)
      * @param string $contact_phone Teléfono del contacto del cobrador. (requerido)
      * @param array $options Arreglo de parámetros opcionales (opcional)
+     * - string 'bank_account_bank_id' Identificador del banco. (opcional)
+     * - string 'bank_account_identifier' Identificador personal del dueño de la cuenta de banco. (opcional)
+     * - string 'bank_account_name' Nombre de la cuenta de banco. (opcional)
+     * - string 'bank_account_number' Número de la cuenta en el banco. (opcional)
+     * - string 'notify_url' URL por omisión para el webservice donde se notificará el pago. (opcional)
+     * - string 'rendition_url' URL para el webservice donde se notificará la rendición. (opcional)
      * @return \Khipu\Model\ReceiversCreateResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -246,7 +252,25 @@ class ReceiversApi
         
 
         if( $options != null ) {
-          
+          // form params
+          if (array_key_exists("bank_account_bank_id", $options) && $options["bank_account_bank_id"] != null) {
+            $formParams['bank_account_bank_id'] = $this->apiClient->getSerializer()->toFormValue($options["bank_account_bank_id"]);
+          }// form params
+          if (array_key_exists("bank_account_identifier", $options) && $options["bank_account_identifier"] != null) {
+            $formParams['bank_account_identifier'] = $this->apiClient->getSerializer()->toFormValue($options["bank_account_identifier"]);
+          }// form params
+          if (array_key_exists("bank_account_name", $options) && $options["bank_account_name"] != null) {
+            $formParams['bank_account_name'] = $this->apiClient->getSerializer()->toFormValue($options["bank_account_name"]);
+          }// form params
+          if (array_key_exists("bank_account_number", $options) && $options["bank_account_number"] != null) {
+            $formParams['bank_account_number'] = $this->apiClient->getSerializer()->toFormValue($options["bank_account_number"]);
+          }// form params
+          if (array_key_exists("notify_url", $options) && $options["notify_url"] != null) {
+            $formParams['notify_url'] = $this->apiClient->getSerializer()->toFormValue($options["notify_url"]);
+          }// form params
+          if (array_key_exists("rendition_url", $options) && $options["rendition_url"] != null) {
+            $formParams['rendition_url'] = $this->apiClient->getSerializer()->toFormValue($options["rendition_url"]);
+          }
         }
 
         
