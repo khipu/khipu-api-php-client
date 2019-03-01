@@ -307,7 +307,10 @@ class ReceiversApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;

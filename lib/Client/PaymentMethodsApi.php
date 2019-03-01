@@ -1,6 +1,6 @@
 <?php
 /**
- * BanksApi
+ * PaymentMethodsApi
  * PHP version 5
  *
  * @category Class
@@ -39,7 +39,7 @@ use \Khipu\ApiException;
 use \Khipu\ObjectSerializer;
 
 /**
- * BanksApi Class Doc Comment
+ * PaymentMethodsApi Class Doc Comment
  *
  * @category Class
  * @package  Khipu
@@ -47,7 +47,7 @@ use \Khipu\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class BanksApi
+class PaymentMethodsApi
 {
 
     /**
@@ -82,7 +82,7 @@ class BanksApi
     /**
      * Set the API client
      * @param \Khipu\ApiClient $apiClient set the API client
-     * @return BanksApi
+     * @return PaymentMethodsApi
      */
     public function setApiClient(ApiClient $apiClient)
     {
@@ -92,20 +92,25 @@ class BanksApi
   
     
     /**
-     * banksGet
+     * merchantsIdPaymentMethodsGet
      *
-     * Obtener listado de bancos
+     * Obtener listado de medios de pago disponible para una cuenta de cobrador
      *
+     * @param string $id Identificador del merchant (requerido)
      * @param array $options Arreglo de parámetros opcionales (opcional)
-     * @return \Khipu\Model\BanksResponse
+     * @return \Khipu\Model\PaymentMethodsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
-    public function banksGet($options = null)
+    public function merchantsIdPaymentMethodsGet($id, $options = null)
     {
         
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling merchantsIdPaymentMethodsGet');
+        }
   
         // parse inputs
-        $resourcePath = "/banks";
+        $resourcePath = "/merchants/{id}/paymentMethods";
         $resourcePath = str_replace("{format}", "json", $resourcePath);
         $method = "GET";
         $httpBody = '';
@@ -132,6 +137,12 @@ class BanksApi
         }
 
 
+        // path params
+            $resourcePath = str_replace(
+                "{" . "id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
         
 
         if( $options != null ) {
@@ -194,19 +205,19 @@ class BanksApi
             list($response, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Khipu\Model\BanksResponse'
+                $headerParams, '\Khipu\Model\PaymentMethodsResponse'
             );
             
             if (!$response) {
                 return null;
             }
 
-            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\BanksResponse', $httpHeader);
+            return $this->apiClient->getSerializer()->deserialize($response, '\Khipu\Model\PaymentMethodsResponse', $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\BanksResponse', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Khipu\Model\PaymentMethodsResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:

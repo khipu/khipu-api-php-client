@@ -55,6 +55,9 @@ class PaymentsCreateResponse implements ArrayAccess
         'payment_url' => 'string',
         'simplified_transfer_url' => 'string',
         'transfer_url' => 'string',
+        'webpay_url' => 'string',
+        'hites_url' => 'string',
+        'payme_url' => 'string',
         'app_url' => 'string',
         'ready_for_terminal' => 'bool'
     );
@@ -68,6 +71,9 @@ class PaymentsCreateResponse implements ArrayAccess
         'payment_url' => 'payment_url',
         'simplified_transfer_url' => 'simplified_transfer_url',
         'transfer_url' => 'transfer_url',
+        'webpay_url' => 'webpay_url',
+        'hites_url' => 'hites_url',
+        'payme_url' => 'payme_url',
         'app_url' => 'app_url',
         'ready_for_terminal' => 'ready_for_terminal'
     );
@@ -81,6 +87,9 @@ class PaymentsCreateResponse implements ArrayAccess
         'payment_url' => 'setPaymentUrl',
         'simplified_transfer_url' => 'setSimplifiedTransferUrl',
         'transfer_url' => 'setTransferUrl',
+        'webpay_url' => 'setWebpayUrl',
+        'hites_url' => 'setHitesUrl',
+        'payme_url' => 'setPaymeUrl',
         'app_url' => 'setAppUrl',
         'ready_for_terminal' => 'setReadyForTerminal'
     );
@@ -94,6 +103,9 @@ class PaymentsCreateResponse implements ArrayAccess
         'payment_url' => 'getPaymentUrl',
         'simplified_transfer_url' => 'getSimplifiedTransferUrl',
         'transfer_url' => 'getTransferUrl',
+        'webpay_url' => 'getWebpayUrl',
+        'hites_url' => 'getHitesUrl',
+        'payme_url' => 'getPaymeUrl',
         'app_url' => 'getAppUrl',
         'ready_for_terminal' => 'getReadyForTerminal'
     );
@@ -124,6 +136,24 @@ class PaymentsCreateResponse implements ArrayAccess
     protected $transfer_url;
     
     /**
+      * $webpay_url URL de pago usando Webpay
+      * @var string
+      */
+    protected $webpay_url;
+    
+    /**
+      * $hites_url URL de pago usando Hites
+      * @var string
+      */
+    protected $hites_url;
+    
+    /**
+      * $payme_url URL de pago usando Hites
+      * @var string
+      */
+    protected $payme_url;
+    
+    /**
       * $app_url URL para invocar el pago desde un dispositivo móvil usando la APP de khipu
       * @var string
       */
@@ -147,6 +177,9 @@ class PaymentsCreateResponse implements ArrayAccess
             $this->payment_url = $data["payment_url"];
             $this->simplified_transfer_url = $data["simplified_transfer_url"];
             $this->transfer_url = $data["transfer_url"];
+            $this->webpay_url = $data["webpay_url"];
+            $this->hites_url = $data["hites_url"];
+            $this->payme_url = $data["payme_url"];
             $this->app_url = $data["app_url"];
             $this->ready_for_terminal = $data["ready_for_terminal"];
         }
@@ -233,6 +266,69 @@ class PaymentsCreateResponse implements ArrayAccess
     {
         
         $this->transfer_url = $transfer_url;
+        return $this;
+    }
+    
+    /**
+     * Gets webpay_url
+     * @return string
+     */
+    public function getWebpayUrl()
+    {
+        return $this->webpay_url;
+    }
+  
+    /**
+     * Sets webpay_url
+     * @param string $webpay_url URL de pago usando Webpay
+     * @return $this
+     */
+    public function setWebpayUrl($webpay_url)
+    {
+        
+        $this->webpay_url = $webpay_url;
+        return $this;
+    }
+    
+    /**
+     * Gets hites_url
+     * @return string
+     */
+    public function getHitesUrl()
+    {
+        return $this->hites_url;
+    }
+  
+    /**
+     * Sets hites_url
+     * @param string $hites_url URL de pago usando Hites
+     * @return $this
+     */
+    public function setHitesUrl($hites_url)
+    {
+        
+        $this->hites_url = $hites_url;
+        return $this;
+    }
+    
+    /**
+     * Gets payme_url
+     * @return string
+     */
+    public function getPaymeUrl()
+    {
+        return $this->payme_url;
+    }
+  
+    /**
+     * Sets payme_url
+     * @param string $payme_url URL de pago usando Hites
+     * @return $this
+     */
+    public function setPaymeUrl($payme_url)
+    {
+        
+        $this->payme_url = $payme_url;
         return $this;
     }
     

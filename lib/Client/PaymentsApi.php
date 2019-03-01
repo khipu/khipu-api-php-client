@@ -185,7 +185,10 @@ class PaymentsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;
@@ -263,6 +266,7 @@ class PaymentsApi
      * - double 'integrator_fee' Comisión para el integrador. Sólo es válido si la cuenta de cobro tiene una cuenta de integrador asociada (opcional)
      * - bool 'collect_account_uuid' Para cuentas de cobro con más cuenta propia. Permite elegir la cuenta donde debe ocurrir la transferencia. (opcional)
      * - string 'confirm_timeout_date' Fecha de rendición del cobro. Es también la fecha final para poder reembolsar el cobro. Formato ISO-8601. Ej: 2017-03-01T13:00:00Z (opcional)
+     * - string 'mandatory_payment_method' Si se especifica, el cobro sólo se podrá pagar utilizando ese medio de pago. El valor para el campo de obtiene consultando el endpoint &#39;Consulta medios de pago disponibles&#39;. (opcional)
      * @return \Khipu\Model\PaymentsCreateResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -385,6 +389,9 @@ class PaymentsApi
           }// form params
           if (array_key_exists("confirm_timeout_date", $options) && $options["confirm_timeout_date"] != null) {
             $formParams['confirm_timeout_date'] = $this->apiClient->getSerializer()->toFormValue($options["confirm_timeout_date"]);
+          }// form params
+          if (array_key_exists("mandatory_payment_method", $options) && $options["mandatory_payment_method"] != null) {
+            $formParams['mandatory_payment_method'] = $this->apiClient->getSerializer()->toFormValue($options["mandatory_payment_method"]);
           }
         }
 
@@ -422,7 +429,10 @@ class PaymentsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;
@@ -569,7 +579,10 @@ class PaymentsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;
@@ -716,7 +729,10 @@ class PaymentsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;
@@ -863,7 +879,10 @@ class PaymentsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;
@@ -1014,7 +1033,10 @@ class PaymentsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-
+        if ($_tempBody != null){
+          $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
+          $toSign .="&".$json_body;
+        }
         $hash = hash_hmac('sha256', $toSign , $this->apiClient->getConfig()->getSecret()); //sha1($concatenated . "&secret=" . $secret) . "\n";
 
         $headerParams['Authorization'] = $this->apiClient->getConfig()->getReceiverId() . ":" . $hash;
