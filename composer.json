@@ -8,14 +8,16 @@
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
-    "license": "Apache v2",
+    "homepage": "https://github.com/khipu/khipu-api-php-client",
+    "license": "Apache-2.0",
     "authors": [
         {
-            "name": "Swagger and contributors",
-            "homepage": "https://github.com/swagger-api/swagger-codegen"
+            "name": "khipu",
+            "homepage": "https://github.com/khipu/khipu-api-php-client"
         }
     ],
+    "type": "library",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",
         "ext-curl": "*",
