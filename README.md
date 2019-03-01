@@ -22,7 +22,7 @@ $c->setDebug(true);
 $cl = new Khipu\ApiClient($c);
 
 $exp = new DateTime();
-$exp->setDate(2015, 11, 3);
+$exp->setDate(2020, 11, 3);
 
 $kh = new Khipu\Client\PaymentsApi($cl);
 
