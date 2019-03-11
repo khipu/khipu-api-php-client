@@ -1,23 +1,21 @@
 {
     "name": "khipu/khipu-api-client",
-    "version": "2.8.2",
+    "version": "2.8.6",
     "description": "",
     "keywords": [
-        "khipu",
+        "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "https://github.com/khipu/khipu-api-php-client",
-    "license": "Apache-2.0",
+    "homepage": "http://swagger.io",
+    "license": "Apache v2",
     "authors": [
         {
-            "name": "khipu",
-            "homepage": "https://github.com/khipu/khipu-api-php-client"
+            "name": "Swagger and contributors",
+            "homepage": "https://github.com/swagger-api/swagger-codegen"
         }
     ],
-    "type": "library",
-    "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",
         "ext-curl": "*",

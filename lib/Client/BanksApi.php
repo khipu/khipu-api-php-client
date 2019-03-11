@@ -96,7 +96,7 @@ class BanksApi
      *
      * Obtener listado de bancos
      *
-     * @param array $options Arreglo de parámetros opcionales (opcional)
+     * @param array $options Arreglo de par��metros opcionales (opcional)
      * @return \Khipu\Model\BanksResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
