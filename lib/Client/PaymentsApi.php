@@ -97,7 +97,7 @@ class PaymentsApi
      * Obtener información de un pago
      *
      * @param string $notification_token Token de notifiación recibido usando la API de notificaiones 1.3 o superior. (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\PaymentsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -245,7 +245,7 @@ class PaymentsApi
      * @param string $subject Motivo (requerido)
      * @param string $currency El código de moneda en formato ISO-4217 (requerido)
      * @param double $amount El monto del cobro. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * - string 'transaction_id' Identificador propio de la  transacción. Ej: número de factura u orden de compra (opcional)
      * - string 'custom' Parámetro para enviar información personalizada de la transacción. Ej: documento XML con el detalle del carro de compra (opcional)
      * - string 'body' Descripción del cobro (opcional)
@@ -487,7 +487,7 @@ class PaymentsApi
      * Obtener información de un pago
      *
      * @param string $id Identificador del pago (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\PaymentsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -637,7 +637,7 @@ class PaymentsApi
      * Borrar un pago
      *
      * @param string $id Identificador del pago (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -787,7 +787,7 @@ class PaymentsApi
      * Confirmar el pago.
      *
      * @param string $id Identificador del pago (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -937,7 +937,7 @@ class PaymentsApi
      * Reembolsar total o parcialmente un pago
      *
      * @param string $id Identificador del pago (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * - double 'amount' El monto a devolver. Sin separador de miles y usando &#39;.&#39; como separador de decimales. Hasta 4 lugares decimales, dependiendo de la moneda. Si se omite el reembolso se hará por el total del monto del pago. (opcional)
      * @return \Khipu\Model\SuccessResponse
      * @throws \Khipu\ApiException on non-2xx response

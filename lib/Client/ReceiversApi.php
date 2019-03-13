@@ -111,7 +111,7 @@ class ReceiversApi
      * @param string $contact_job_title Cargo del contacto del cobrador. (requerido)
      * @param string $contact_email Correo electrónico del contacto del cobrador. (requerido)
      * @param string $contact_phone Teléfono del contacto del cobrador. (requerido)
-     * @param array $options Arreglo de par��metros opcionales (opcional)
+     * @param array $options Arreglo de parámetros opcionales (opcional)
      * - string 'bank_account_bank_id' Identificador del banco. (opcional)
      * - string 'bank_account_identifier' Identificador personal del dueño de la cuenta de banco. (opcional)
      * - string 'bank_account_name' Nombre de la cuenta de banco. (opcional)
