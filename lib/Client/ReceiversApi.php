@@ -111,7 +111,7 @@ class ReceiversApi
      * @param string $contact_job_title Cargo del contacto del cobrador. (requerido)
      * @param string $contact_email Correo electrónico del contacto del cobrador. (requerido)
      * @param string $contact_phone Teléfono del contacto del cobrador. (requerido)
-     * @param array $options Arreglo de parámetros opcionales (opcional)
+     * @param array $options Arreglo de par��metros opcionales (opcional)
      * - string 'bank_account_bank_id' Identificador del banco. (opcional)
      * - string 'bank_account_identifier' Identificador personal del dueño de la cuenta de banco. (opcional)
      * - string 'bank_account_name' Nombre de la cuenta de banco. (opcional)
@@ -307,7 +307,7 @@ class ReceiversApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-        if ($_tempBody != null){
+        if (isset($_tempBody)){
           $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
           $toSign .="&".$json_body;
         }

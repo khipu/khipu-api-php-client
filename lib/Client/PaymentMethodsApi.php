@@ -97,7 +97,7 @@ class PaymentMethodsApi
      * Obtener listado de medios de pago disponible para una cuenta de cobrador
      *
      * @param string $id Identificador del merchant (requerido)
-     * @param array $options Arreglo de parámetros opcionales (opcional)
+     * @param array $options Arreglo de par��metros opcionales (opcional)
      * @return \Khipu\Model\PaymentMethodsResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -189,7 +189,7 @@ class PaymentMethodsApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-        if ($_tempBody != null){
+        if (isset($_tempBody)){
           $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
           $toSign .="&".$json_body;
         }

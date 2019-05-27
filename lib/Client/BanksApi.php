@@ -96,7 +96,7 @@ class BanksApi
      *
      * Obtener listado de bancos
      *
-     * @param array $options Arreglo de parámetros opcionales (opcional)
+     * @param array $options Arreglo de par��metros opcionales (opcional)
      * @return \Khipu\Model\BanksResponse
      * @throws \Khipu\ApiException on non-2xx response
      */
@@ -178,7 +178,7 @@ class BanksApi
         foreach ($keys as $key) {
           $toSign .= "&$key=" . $encoded[$key];
         }
-        if ($_tempBody != null){
+        if (isset($_tempBody)){
           $json_body = json_encode($this->apiClient->getSerializer()->sanitizeForSerialization($_tempBody));
           $toSign .="&".$json_body;
         }
