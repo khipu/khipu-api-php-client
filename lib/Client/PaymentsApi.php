@@ -125,37 +125,6 @@ class PaymentsApi
   
         // query params
         $queryParams['notification_token'] = $this->apiClient->getSerializer()->toQueryValue($notification_token);
-        
-
-        if( $options != null ) {
-          
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
-        
-
-        if( $options != null ) {
-          
-        }
-
-        
-
-        if( $options != null ) {
-            
-        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -163,10 +132,7 @@ class PaymentsApi
         } else if (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
-        
-        
-        
+          
         $encoded = array();
 
         foreach ($formParams as $key => $value) {
@@ -299,26 +265,6 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
-  
-        
-
-        if( $options != null ) {
-          
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
 
         // form params
         $formParams['subject'] = $this->apiClient->getSerializer()->toFormValue($subject);
@@ -512,20 +458,6 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
-  
-        
-
-        if( $options != null ) {
-          
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
 
         // path params
             $resourcePath = str_replace(
@@ -533,23 +465,6 @@ class PaymentsApi
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
-        
-
-        if( $options != null ) {
-            
-        }
-
-        
-
-        if( $options != null ) {
-          
-        }
-
-        
-
-        if( $options != null ) {
-            
-        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -662,20 +577,6 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
-  
-        
-
-        if( $options != null ) {
-          
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
 
         // path params
             $resourcePath = str_replace(
@@ -683,23 +584,6 @@ class PaymentsApi
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
-        
-
-        if( $options != null ) {
-            
-        }
-
-        
-
-        if( $options != null ) {
-          
-        }
-
-        
-
-        if( $options != null ) {
-            
-        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -707,9 +591,6 @@ class PaymentsApi
         } else if (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
         }
-        
-        
-        
         
         $encoded = array();
 
@@ -812,20 +693,6 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
-  
-        
-
-        if( $options != null ) {
-          
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
 
         // path params
             $resourcePath = str_replace(
@@ -833,23 +700,6 @@ class PaymentsApi
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
-        
-
-        if( $options != null ) {
-            
-        }
-
-        
-
-        if( $options != null ) {
-          
-        }
-
-        
-
-        if( $options != null ) {
-            
-        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -964,20 +814,6 @@ class PaymentsApi
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/x-www-form-urlencoded'));
   
-        
-
-        if( $options != null ) {
-          
-        }
-
-
-        
-
-        if( $options != null ) {
-            
-        }
-
-
         // path params
             $resourcePath = str_replace(
                 "{" . "id" . "}",
@@ -985,24 +821,11 @@ class PaymentsApi
                 $resourcePath
             );
         
-
-        if( $options != null ) {
-            
-        }
-
-        
-
         if( $options != null ) {
           // form params
           if (array_key_exists("amount", $options) && $options["amount"] != null) {
             $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($options["amount"]);
           }
-        }
-
-        
-
-        if( $options != null ) {
-            
         }
   
         // for model (json/xml)
