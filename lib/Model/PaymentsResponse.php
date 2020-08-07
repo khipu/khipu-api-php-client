@@ -89,7 +89,8 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'string',
         'send_reminders' => 'bool',
         'send_email' => 'bool',
-        'payment_method' => 'string'
+        'payment_method' => 'string',
+        'funds_source' => 'string'
     );
   
     /** 
@@ -135,7 +136,8 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'responsible_user_email',
         'send_reminders' => 'send_reminders',
         'send_email' => 'send_email',
-        'payment_method' => 'payment_method'
+        'payment_method' => 'payment_method',
+        'funds_source' => 'funds_source'
     );
   
     /**
@@ -181,7 +183,8 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'setResponsibleUserEmail',
         'send_reminders' => 'setSendReminders',
         'send_email' => 'setSendEmail',
-        'payment_method' => 'setPaymentMethod'
+        'payment_method' => 'setPaymentMethod',
+        'funds_source' => 'setFundsSource'
     );
   
     /**
@@ -227,7 +230,8 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'getResponsibleUserEmail',
         'send_reminders' => 'getSendReminders',
         'send_email' => 'getSendEmail',
-        'payment_method' => 'getPaymentMethod'
+        'payment_method' => 'getPaymentMethod',
+        'funds_source' => 'getFundsSource'
     );
   
     
@@ -465,6 +469,12 @@ class PaymentsResponse implements ArrayAccess
       */
     protected $payment_method;
     
+    /**
+      * $funds_source Origen de fondos usado por el pagador, puede ser 'debit' para pago con débito, 'prepaid' para pago con prepago, 'credit' para pago con crédito o vacío en el caso de que se haya pagado mediante transferencia bancaria.
+      * @var string
+      */
+    protected $funds_source;
+    
 
     /**
      * Constructor
@@ -512,6 +522,7 @@ class PaymentsResponse implements ArrayAccess
             $this->send_reminders = $data["send_reminders"];
             $this->send_email = $data["send_email"];
             $this->payment_method = $data["payment_method"];
+            $this->funds_source = $data["funds_source"];
         }
     }
     
@@ -1331,6 +1342,27 @@ class PaymentsResponse implements ArrayAccess
     {
         
         $this->payment_method = $payment_method;
+        return $this;
+    }
+    
+    /**
+     * Gets funds_source
+     * @return string
+     */
+    public function getFundsSource()
+    {
+        return $this->funds_source;
+    }
+  
+    /**
+     * Sets funds_source
+     * @param string $funds_source Origen de fondos usado por el pagador, puede ser 'debit' para pago con débito, 'prepaid' para pago con prepago, 'credit' para pago con crédito o vacío en el caso de que se haya pagado mediante transferencia bancaria.
+     * @return $this
+     */
+    public function setFundsSource($funds_source)
+    {
+        
+        $this->funds_source = $funds_source;
         return $this;
     }
     
