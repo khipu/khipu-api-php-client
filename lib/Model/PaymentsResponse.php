@@ -236,7 +236,7 @@ class PaymentsResponse implements ArrayAccess
   
     
     /**
-      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
+      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres. Cómo este identificador es único, se puede usar, por ejemplo, para evitar procesar una notificación repetida. (Khipu espera un código 200 al notificar un pago, si esto no ocurre se reintenta hasta por dos días).
       * @var string
       */
     protected $payment_id;
@@ -537,7 +537,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets payment_id
-     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
+     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres. Cómo este identificador es único, se puede usar, por ejemplo, para evitar procesar una notificación repetida. (Khipu espera un código 200 al notificar un pago, si esto no ocurre se reintenta hasta por dos días).
      * @return $this
      */
     public function setPaymentId($payment_id)
