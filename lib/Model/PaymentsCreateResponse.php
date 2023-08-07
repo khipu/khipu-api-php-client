@@ -112,7 +112,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     
     /**
-      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres. Cómo este identificador es único, se puede usar, por ejemplo, para evitar procesar una notificación repetida. (Khipu espera un código 200 al notificar un pago, si esto no ocurre se reintenta hasta por dos días).
+      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
       * @var string
       */
     protected $payment_id;
@@ -196,7 +196,7 @@ class PaymentsCreateResponse implements ArrayAccess
   
     /**
      * Sets payment_id
-     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres. Cómo este identificador es único, se puede usar, por ejemplo, para evitar procesar una notificación repetida. (Khipu espera un código 200 al notificar un pago, si esto no ocurre se reintenta hasta por dos días).
+     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
      * @return $this
      */
     public function setPaymentId($payment_id)
@@ -379,9 +379,10 @@ class PaymentsCreateResponse implements ArrayAccess
      * @param  integer $offset Offset 
      * @return boolean
      */
+	#[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
-        return isset($this->$offset);
+		return isset($this->data[$offset]);
     }
   
     /**
@@ -389,9 +390,10 @@ class PaymentsCreateResponse implements ArrayAccess
      * @param  integer $offset Offset 
      * @return mixed 
      */
+	#[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->$offset;
+		return isset($this->data[$offset]);
     }
   
     /**
@@ -400,9 +402,10 @@ class PaymentsCreateResponse implements ArrayAccess
      * @param  mixed   $value  Value to be set
      * @return void
      */
+	#[\ReturnTypeWillChange] 
     public function offsetSet($offset, $value)
     {
-        $this->$offset = $value;
+		$this->data[$offset]= $value;
     }
   
     /**
@@ -410,9 +413,10 @@ class PaymentsCreateResponse implements ArrayAccess
      * @param  integer $offset Offset 
      * @return void
      */
+	#[\ReturnTypeWillChange] 
     public function offsetUnset($offset)
     {
-        unset($this->$offset);
+		unset($this->data[$offset]);
     }
   
     /**

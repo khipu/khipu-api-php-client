@@ -89,8 +89,7 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'string',
         'send_reminders' => 'bool',
         'send_email' => 'bool',
-        'payment_method' => 'string',
-        'funds_source' => 'string'
+        'payment_method' => 'string'
     );
   
     /** 
@@ -136,8 +135,7 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'responsible_user_email',
         'send_reminders' => 'send_reminders',
         'send_email' => 'send_email',
-        'payment_method' => 'payment_method',
-        'funds_source' => 'funds_source'
+        'payment_method' => 'payment_method'
     );
   
     /**
@@ -183,8 +181,7 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'setResponsibleUserEmail',
         'send_reminders' => 'setSendReminders',
         'send_email' => 'setSendEmail',
-        'payment_method' => 'setPaymentMethod',
-        'funds_source' => 'setFundsSource'
+        'payment_method' => 'setPaymentMethod'
     );
   
     /**
@@ -230,13 +227,12 @@ class PaymentsResponse implements ArrayAccess
         'responsible_user_email' => 'getResponsibleUserEmail',
         'send_reminders' => 'getSendReminders',
         'send_email' => 'getSendEmail',
-        'payment_method' => 'getPaymentMethod',
-        'funds_source' => 'getFundsSource'
+        'payment_method' => 'getPaymentMethod'
     );
   
     
     /**
-      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres. Cómo este identificador es único, se puede usar, por ejemplo, para evitar procesar una notificación repetida. (Khipu espera un código 200 al notificar un pago, si esto no ocurre se reintenta hasta por dos días).
+      * $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
       * @var string
       */
     protected $payment_id;
@@ -469,12 +465,6 @@ class PaymentsResponse implements ArrayAccess
       */
     protected $payment_method;
     
-    /**
-      * $funds_source Origen de fondos usado por el pagador, puede ser 'debit' para pago con débito, 'prepaid' para pago con prepago, 'credit' para pago con crédito o vacío en el caso de que se haya pagado mediante transferencia bancaria.
-      * @var string
-      */
-    protected $funds_source;
-    
 
     /**
      * Constructor
@@ -522,7 +512,6 @@ class PaymentsResponse implements ArrayAccess
             $this->send_reminders = $data["send_reminders"];
             $this->send_email = $data["send_email"];
             $this->payment_method = $data["payment_method"];
-            $this->funds_source = $data["funds_source"];
         }
     }
     
@@ -537,7 +526,7 @@ class PaymentsResponse implements ArrayAccess
   
     /**
      * Sets payment_id
-     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres. Cómo este identificador es único, se puede usar, por ejemplo, para evitar procesar una notificación repetida. (Khipu espera un código 200 al notificar un pago, si esto no ocurre se reintenta hasta por dos días).
+     * @param string $payment_id Identificador único del pago, es una cadena alfanumérica de 12 caracteres
      * @return $this
      */
     public function setPaymentId($payment_id)
@@ -1344,67 +1333,50 @@ class PaymentsResponse implements ArrayAccess
         $this->payment_method = $payment_method;
         return $this;
     }
-    
-    /**
-     * Gets funds_source
-     * @return string
-     */
-    public function getFundsSource()
-    {
-        return $this->funds_source;
-    }
-  
-    /**
-     * Sets funds_source
-     * @param string $funds_source Origen de fondos usado por el pagador, puede ser 'debit' para pago con débito, 'prepaid' para pago con prepago, 'credit' para pago con crédito o vacío en el caso de que se haya pagado mediante transferencia bancaria.
-     * @return $this
-     */
-    public function setFundsSource($funds_source)
-    {
-        
-        $this->funds_source = $funds_source;
-        return $this;
-    }
-    
+
     /**
      * Returns true if offset exists. False otherwise.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
-        return isset($this->$offset);
+        return isset($this->data[$offset]);
     }
-  
+
     /**
      * Gets offset.
-     * @param  integer $offset Offset 
-     * @return mixed 
+     * @param  integer $offset Offset
+     * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->$offset;
+        return isset($this->data[$offset]);
     }
-  
+
     /**
      * Sets value based on offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @param  mixed   $value  Value to be set
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
-        $this->$offset = $value;
+        $this->data[$offset]= $value;
     }
-  
+
     /**
      * Unsets offset.
-     * @param  integer $offset Offset 
+     * @param  integer $offset Offset
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
-        unset($this->$offset);
+        unset($this->data[$offset]);
     }
   
     /**
